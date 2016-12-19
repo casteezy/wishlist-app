@@ -1,18 +1,23 @@
 import React, {Component} from 'react';
-import logo from '../App/logo.svg';
+import {Grid, Row, Col, PageHeader} from 'react-bootstrap';
+import WishlistViewItem from './WishlistViewItem';
+
 import './WishlistView.scss';
 
 class WishlistView extends Component {
     render() {
         return (
-            <div className="App WishlistView">
-                <div className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h2>Welcome to React</h2>
-                </div>
-                <p className="App-intro">
-                    To get started, edit <code>src/App/App.js</code> and save to reload.
-                </p>
+            <div className="WishlistView container">
+
+                <Grid>
+                    <Row className="show-grid">
+                        <Col md={10} mdOffset={1}>
+                            <PageHeader className="page-title">Jane's Wishlist</PageHeader>
+
+                            <WishlistViewItem />
+                        </Col>
+                    </Row>
+                </Grid>
             </div>
         );
     }

@@ -5,7 +5,9 @@ import './App.scss';
 class App extends Component {
   render() {
     return (
-      <WishlistView />
+        <div className="App">
+          <WishlistView />
+        </div>
     );
   }
 }
