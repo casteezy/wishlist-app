@@ -13,7 +13,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onClickMarkPurchased: () => {
-            console.log('onClickMarkPurchased', ownProps);
             dispatch(markPurchased(ownProps.itemId));
         },
         onClickAskAbout: () => {

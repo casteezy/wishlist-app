@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
-import WishlistViewContainer from '../WishlistView';
+import React from 'react';
+import WishlistView from '../WishlistView';
 
 import './App.scss';
 
-class App extends Component {
-  render() {
+const App = () => {
     return (
-            <div className="App">
-                <WishlistViewContainer />
-            </div>
+        <div className="App">
+            <WishlistView />
+        </div>
     );
-  }
-}
-
+};
 export default App;

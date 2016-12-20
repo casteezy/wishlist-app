@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import Flexbox from 'flexbox-react';
 import {PageHeader} from 'react-bootstrap';
+import Flexbox from 'flexbox-react';
 import WishlistViewItem from './components/WishlistViewItem';
 import './WishlistView.scss';
 
@@ -9,12 +9,12 @@ const mapStateToProps = (state) => {
     const { wishlistView } = state;
     return {
         ownerName: wishlistView.ownerName,
-        wishlistViewItems: wishlistView.wishlistViewItems,
+        items: wishlistView.items,
     };
 };
 
-const WishlistViewComponent = ({ownerName, wishlistViewItems = []}) => {
-    const itemComponents = wishlistViewItems.map(({id, title, detail, description, purchased}) => {
+const WishlistViewComponent = ({ownerName, items = []}) => {
+    const itemComponents = items.map(({id, title, detail, description, purchased}) => {
         return (
             <WishlistViewItem
                 key={id}
@@ -31,7 +31,7 @@ const WishlistViewComponent = ({ownerName, wishlistViewItems = []}) => {
     return (
         <div className="WishlistView container">
             <Flexbox flexDirection="column">
-                <PageHeader className="page-title">
+                <PageHeader className="WishlistView--Title">
                     {ownerName}'s Wishlist
                 </PageHeader>
                 {itemComponents}
@@ -42,7 +42,7 @@ const WishlistViewComponent = ({ownerName, wishlistViewItems = []}) => {
 
 WishlistViewComponent.propTypes = {
     ownerName: PropTypes.string.isRequired,
-    wishlistViewItems: PropTypes.array,
+    items: PropTypes.array,
 };
 
 
