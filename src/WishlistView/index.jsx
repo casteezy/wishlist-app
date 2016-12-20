@@ -1,9 +1,9 @@
 import React from 'react';
-import {Grid, Row, Col, PageHeader} from 'react-bootstrap';
+import Flexbox from 'flexbox-react';
 import WishlistViewItem from './WishlistViewItem';
+import {PageHeader} from 'react-bootstrap';
 
 import './WishlistView.scss';
-import {FontAwesome} from 'react-fontawesome';
 
 function WishlistView() {
     const ownerName = 'Jane';
@@ -21,36 +21,23 @@ function WishlistView() {
 
     const wishlistViewItems = items.map(({id, title, detail, description}) => {
         return (
-            <Row key={id}>
-                <Col md={10} mdOffset={1}>
-                    <WishlistViewItem
-                        imgSrc='http://placehold.it/200x200'
-                        title={title}
-                        detail={detail}
-                        description={description}
-                    />
-                </Col>
-            </Row>
+            <WishlistViewItem
+                imgSrc='http://placehold.it/200x200'
+                title={title}
+                detail={detail}
+                description={description}
+            />
         );
     });
 
     return (
         <div className="WishlistView container">
-            <Grid>
-                <Row>
-                    <Col md={10} mdOffset={1}>
-                        <PageHeader className="page-title">{ownerName}'s Wishlist
-                            {/*<FontAwesome
-                            className='super-crazy-colors'
-                            name='rocket'
-                            size='2x'
-                            spin
-                            style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}
-                        />*/}</PageHeader>
-                    </Col>
-                </Row>
+            <Flexbox flexDirection="column">
+                <PageHeader className="page-title">
+                    {ownerName}'s Wishlist
+                </PageHeader>
                 {wishlistViewItems}
-            </Grid>
+            </Flexbox>
         </div>
     );
 }

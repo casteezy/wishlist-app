@@ -1,5 +1,6 @@
 import React from 'react';
 import {Media} from 'react-bootstrap';
+import LinkBar from './LinkBar';
 
 function WishlistViewItem({imgSrc, title, detail, description}) {
     return (
@@ -11,14 +12,9 @@ function WishlistViewItem({imgSrc, title, detail, description}) {
                 <Media.Body>
                     <Media.Heading className="WishlistViewItem--Title"><a href="#">{title}</a></Media.Heading>
                     <Media.Body>
-                        <p className="WishlistViewItem--Details"><strong>{detail}</strong></p>
+                        <p className="WishlistViewItem--Detail"><strong>{detail}</strong></p>
                         <p className="WishlistViewItem--Description">{description}</p>
-                        <ul className="list-inline WishlistViewItem--LinkBar">
-                            <li className="WishlistViewItem--LinkBarItem"><a href="#">
-                                 Mark as Purchased</a></li>
-                            <li className="WishlistViewItem--LinkBarItem"><a href="#">
-                                <span className="fa fa-question-circle"></span> Ask About This Item</a></li>
-                        </ul>
+                        <LinkBar />
                     </Media.Body>
                 </Media.Body>
             </Media>

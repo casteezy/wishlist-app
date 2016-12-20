@@ -155,14 +155,6 @@ module.exports = {
         test: /\.json$/,
         loader: 'json'
       },
-      {
-          test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)(\?.*)?$/,
-          include: [paths.appSrc, paths.appNodeModules],
-          loader: 'file',
-          query: {
-              name: 'static/media/[name].[ext]'
-          }
-      },
       // "file" loader for svg
       {
         test: /\.svg$/,
