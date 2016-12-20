@@ -2,5 +2,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # TODO:
 
-- [ ] Add test library
 - [ ] Add router library

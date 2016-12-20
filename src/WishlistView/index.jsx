@@ -14,16 +14,12 @@ const mapStateToProps = (state) => {
 };
 
 const WishlistViewComponent = ({ownerName, items = []}) => {
-    const itemComponents = items.map(({id, title, detail, description, purchased}) => {
+    const itemComponents = items.map((props) => {
         return (
             <WishlistViewItem
-                key={id}
-                id={id}
+                key={props.id}
                 imgSrc='http://placehold.it/200x200'
-                title={title}
-                detail={detail}
-                description={description}
-                purchased={purchased}
+                {...props}
             />
         );
     });
@@ -44,6 +40,5 @@ WishlistViewComponent.propTypes = {
     ownerName: PropTypes.string.isRequired,
     items: PropTypes.array,
 };
-
 
 export default connect(mapStateToProps)(WishlistViewComponent);

@@ -23,6 +23,7 @@ const testItem = ({id, title = 'Title', detail = 'Detail', description = 'Descri
 
 describe('WishlistView reducer', () => {
     it('should handle initial state', () => {
+        // FIXME: initial state
         expect(
             reducer(undefined, {})
         ).toEqual(initialState);

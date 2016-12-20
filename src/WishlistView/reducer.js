@@ -3,8 +3,8 @@ import {
 } from './actions';
 
 // TODO: fetch initial state
-const ownerName = 'Jane';
-const items = [{
+const initialOwnerName = 'Jane';
+const initialItems = [{
     id: 0,
     title: 'Lorem Ipsum Dolores',
     detail: '$21.99 at Amazon, Qty: 1',
@@ -19,11 +19,11 @@ const items = [{
 }];
 
 export const initialState = {
-    ownerName,
-    items,
+    ownerName: initialOwnerName,
+    items: initialItems,
 };
 
-const itemsReducer = (state = [], action) => {
+const items = (state = [], action) => {
     switch (action.type) {
         case MARK_PURCHASED:
             return state.map((item) => {
@@ -42,7 +42,7 @@ const wishlistView = (state = initialState, action) => {
     switch (action.type) {
         case MARK_PURCHASED:
             return Object.assign({}, state, {
-                items: itemsReducer(state.items, action)
+                items: items(state.items, action)
             });
         default:
             return state;
