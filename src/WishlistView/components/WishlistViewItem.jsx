@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {Media} from 'react-bootstrap';
-import LinkBar from './LinkBar';
+import LinkBarContainer from './LinkBarContainer';
 
-function WishlistViewItem({imgSrc, title, detail, description}) {
+function WishlistViewItem({id, imgSrc, title, detail, description, purchased}) {
     return (
         <div className="WishlistViewItem">
             <Media>
@@ -14,12 +14,21 @@ function WishlistViewItem({imgSrc, title, detail, description}) {
                     <Media.Body>
                         <p className="WishlistViewItem--Detail"><strong>{detail}</strong></p>
                         <p className="WishlistViewItem--Description">{description}</p>
-                        <LinkBar />
+                        <LinkBarContainer itemId={id} purchased={purchased} />
                     </Media.Body>
                 </Media.Body>
             </Media>
         </div>
     );
 }
+
+WishlistViewItem.propTypes = {
+    id: PropTypes.number.isRequired,
+    imgSrc: PropTypes.string,
+    title: PropTypes.string,
+    detail: PropTypes.string,
+    description: PropTypes.string,
+    purchased: PropTypes.bool,
+};
 
 export default WishlistViewItem;
