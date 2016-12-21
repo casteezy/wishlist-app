@@ -3,23 +3,18 @@ import {connect} from 'react-redux';
 import {markPurchased} from '../actions';
 import LinkBar from './LinkBar';
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        // TODO
-        purchased: ownProps.purchased
-    };
-};
+const mapStateToProps = (state, ownProps) => ({
+    purchased: ownProps.purchased
+});
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        onClickMarkPurchased: () => {
-            dispatch(markPurchased(ownProps.itemId));
-        },
-        onClickAskAbout: () => {
-            // TODO
-        },
-    };
-};
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    handleMarkPurchased: () => {
+        dispatch(markPurchased(ownProps.itemId));
+    },
+    handleAskAbout: () => {
+        // TODO
+    },
+});
 
 
 const LinkBarContainer = connect(
