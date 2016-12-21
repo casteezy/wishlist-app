@@ -1,16 +1,12 @@
-/////////////////////// ACTION TYPES
+// ACTION TYPES
 
 export const MARK_PURCHASED = 'MARK_PURCHASED';
 
 
-/////////////////////// CONSTANTS
+// ACTION CREATORS
 
+export const markPurchased = id => ({
+  id,
+  type: MARK_PURCHASED,
+});
 
-/////////////////////// ACTION CREATORS
-
-export const markPurchased = (id) => {
-    return {
-        type: MARK_PURCHASED,
-        id,
-    };
-};

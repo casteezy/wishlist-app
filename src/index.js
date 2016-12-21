@@ -1,15 +1,17 @@
+/* global document */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import store from './App/store';
-
 import App from './App';
+import './styles';
 
-import './styles.js';
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
 );
+

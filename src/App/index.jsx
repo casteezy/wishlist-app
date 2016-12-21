@@ -1,12 +1,11 @@
 import React from 'react';
 import WishlistView from '../WishlistView';
 
-import './App.scss';
-
+// TODO multiple routes
 const App = () => (
-    <div className="App">
-        <WishlistView />
-    </div>
+  <div className="App">
+    <WishlistView />
+  </div>
 );
 
 export default App;
