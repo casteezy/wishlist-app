@@ -4,12 +4,20 @@
   "private": true,
   "eslintConfig": {
     "extends": "airbnb",
-
     "rules": {
       "newline-per-chained-call": 1,
-      "react/jsx-no-bind": [ "error" ],
-      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-
+      "react/jsx-no-bind": [
+        "error"
+      ],
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ],
       "linebreak-style": 0,
       "no-plusplus": 0,
       "no-mixed-operators": 0,
@@ -70,11 +78,13 @@
     "font-awesome": "^4.7.0",
     "getstorybook": "^1.6.1",
     "global": "^4.3.1",
+    "immutable": "^3.8.1",
     "node-sass": "^4.1.0",
     "react": "^15.4.1",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.1",
     "react-fa": "^4.1.2",
+    "react-immutable-proptypes": "^2.1.0",
     "react-redux": "^5.0.1",
     "sass-loader": "^4.1.0"
   },
