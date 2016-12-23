@@ -9,8 +9,8 @@ import './WishlistView.scss';
 const mapStateToProps = (state) => {
   const wishlistView = state.get('wishlistView');
   return {
-    ownerName: wishlistView.ownerName,
-    items: wishlistView.items,
+    ownerName: wishlistView.get('ownerName'),
+    items: wishlistView.get('items'),
   };
 };
 
