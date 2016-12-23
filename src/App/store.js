@@ -1,8 +1,8 @@
 import { combineReducers, createStore } from 'redux';
-import wishlistView from '../WishlistView/reducer';
+import wishlistViewReducer from '../WishlistView/reducer';
 
 const store = createStore(combineReducers({
-  wishlistView,
+  wishlistView: wishlistViewReducer,
 }));
 
 export default store;

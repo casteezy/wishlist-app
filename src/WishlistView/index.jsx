@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { PageHeader } from 'react-bootstrap';
 import Flexbox from 'flexbox-react';
@@ -29,7 +30,7 @@ const WishlistViewComponent = ({ ownerName, items }) => (
 
 WishlistViewComponent.propTypes = {
   ownerName: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(WishlistViewItemType),
+  items: ImmutablePropTypes.listOf(WishlistViewItemType),
 };
 
 WishlistViewComponent.defaultProps = {
