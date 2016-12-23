@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import configureStore from 'redux-mock-store';
-import { Map } from 'immutable';
+import { Map, List } from 'immutable';
 import * as actions from './actions';
 import reducer, { initialState } from './reducer';
 
@@ -34,15 +34,11 @@ describe('WishlistView reducer', () => {
   });
 
   it('should handle MARK_PURCHASED', () => {
-    const id = 100;
-    const item1 = testItem({ id });
-    const item2 = testItem({ id: 200 });
-    const changedItem1 = testItem({ id, purchased: true });
-    const state = Map({ items: [item1, item2] });
-    const state2 = Map({ items: [changedItem1, item2] });
+    const items = List([testItem({ id: 100 }), testItem({ id: 200 })]);
+    const state = Map({ items });
 
     const store = mockStore(state);
-    store.dispatch(actions.markPurchased(id));
-    expect(store.getState()).toEqual(state2);
+    store.dispatch(actions.markPurchased(100));
+    expect(store.getState()).toEqual(state.setIn(['items', 0, 'purchased'], true));
   });
 });

@@ -1,8 +1,8 @@
-import { combineReducers, createStore } from 'redux';
+import createStore from './createStore';
 import wishlistViewReducer from '../WishlistView/reducer';
 
-const store = createStore(combineReducers({
-  wishlistView: wishlistViewReducer,
-}));
-
-export default store;
+export default createStore({
+  reducers: {
+    wishlistView: wishlistViewReducer,
+  },
+});

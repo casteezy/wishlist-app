@@ -1,7 +1,8 @@
-import Immutable, { List, Map } from 'immutable';
+import { List, Map } from 'immutable';
 import {
   MARK_PURCHASED,
 } from './actions';
+
 
 // TODO: fetch initial state
 let index = 0;
@@ -36,8 +37,9 @@ const itemsReducer = (stateItems = [], action) => {
   switch (action.type) {
     case MARK_PURCHASED:
       return stateItems.map((item) => {
-        if (item.get('id') === action.id) {
-          return item.update('purchased', () => true);
+        const id = item.get('id');
+        if (id === action.id) {
+          return item.set('purchased', true);
         }
         return item;
       });
@@ -48,11 +50,11 @@ const itemsReducer = (stateItems = [], action) => {
 };
 
 const wishlistView = (state = initialState, action) => {
-  const immState = Immutable.fromJS(state);
+  // const immState = Immutable.fromJS(state);
 
   switch (action.type) {
     case MARK_PURCHASED:
-      return immState.update('items', itemsArr => itemsReducer(itemsArr, action));
+      return Object.assign({ ...state }, { items: itemsReducer(state.items, action) });
     default:
       return state;
 
