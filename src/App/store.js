@@ -1,8 +1,8 @@
 import createStore from './createStore';
-import wishlistViewReducer from '../WishlistView/reducer';
+import wishlist from '../reduxModules/wishlist';
 
 export default createStore({
   reducers: {
-    wishlistView: wishlistViewReducer,
+    wishlist,
   },
 });

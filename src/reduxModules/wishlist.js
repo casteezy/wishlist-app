@@ -1,7 +1,7 @@
 import { List, Map } from 'immutable';
-import {
-  MARK_PURCHASED,
-} from './actions';
+
+// ACTION TYPES
+export const MARK_PURCHASED = 'wishlistReducer-app/wishlistReducer/MARK_PURCHASED';
 
 // TODO: fetch initial state
 let index = 0;
@@ -32,6 +32,15 @@ export const initialState = Map({
   items: initialItems,
 });
 
+
+// ACTION CREATORS
+export const markPurchased = id => ({
+  id,
+  type: MARK_PURCHASED,
+});
+
+
+// REDUCERS
 const itemsReducer = (stateItems = [], action) => {
   switch (action.type) {
     case MARK_PURCHASED:
@@ -48,7 +57,7 @@ const itemsReducer = (stateItems = [], action) => {
   }
 };
 
-const wishlistView = (state = initialState, action) => {
+const wishlistReducer = (state = initialState, action) => {
   switch (action.type) {
     case MARK_PURCHASED:
       return state.update('items', itemsArr => itemsReducer(itemsArr, action));
@@ -58,4 +67,4 @@ const wishlistView = (state = initialState, action) => {
   }
 };
 
-export default wishlistView;
+export default wishlistReducer;

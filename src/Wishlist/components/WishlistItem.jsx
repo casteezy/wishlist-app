@@ -3,8 +3,8 @@ import { Media } from 'react-bootstrap';
 import { Icon } from 'react-fa';
 import LinkBarContainer from './LinkBarContainer';
 
-const WishlistViewItem = ({ id, imgSrc, title, detail, description, purchased }) => (
-  <div className="WishlistViewItem">
+const WishlistItem = ({ id, imgSrc, title, detail, description, purchased }) => (
+  <div className="WishlistItem">
     <Media>
       <Media.Left>
         <div className="ImageBlock">
@@ -15,12 +15,12 @@ const WishlistViewItem = ({ id, imgSrc, title, detail, description, purchased })
         </div>
       </Media.Left>
       <Media.Body>
-        <Media.Heading className="WishlistViewItem--Title">
+        <Media.Heading className="WishlistItem--Title">
           <a href="#TODO">{title}</a>
         </Media.Heading>
         <Media.Body>
-          <p className="WishlistViewItem--Detail"><strong>{detail}</strong></p>
-          <p className="WishlistViewItem--Description">{description}</p>
+          <p className="WishlistItem--Detail"><strong>{detail}</strong></p>
+          <p className="WishlistItem--Description">{description}</p>
           <LinkBarContainer itemId={id} purchased={purchased} />
         </Media.Body>
       </Media.Body>
@@ -28,7 +28,7 @@ const WishlistViewItem = ({ id, imgSrc, title, detail, description, purchased })
   </div>
 );
 
-export const WishlistViewItemType = WishlistViewItem.propTypes = {
+export const WishlistItemType = WishlistItem.propTypes = {
   id: PropTypes.number.isRequired,
   imgSrc: PropTypes.string,
   title: PropTypes.string,
@@ -37,4 +37,4 @@ export const WishlistViewItemType = WishlistViewItem.propTypes = {
   purchased: PropTypes.bool,
 };
 
-export default WishlistViewItem;
+export default WishlistItem;
