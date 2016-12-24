@@ -1,5 +1,5 @@
 import React from 'react';
-import WishlistView from '../WishlistView';
+import WishlistView from '../WishlistView/WishlistView';
 
 // TODO multiple routes
 const App = () => (

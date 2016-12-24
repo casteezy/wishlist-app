@@ -1,4 +1,6 @@
-import { describe, it, expect } from 'mocha';
+/* eslint-disable no-undef */
+import { Map, List } from 'immutable';
+import store from '../App/store';
 import * as actions from './actions';
 import reducer, { initialState } from './reducer';
 
@@ -13,13 +15,13 @@ describe('WishlistView actions', () => {
 
 const testItem = ({ id, title = 'Title', detail = 'Detail', description = 'Description', purchased = false }) => {
   if (!id) throw new Error('id required for testItem');
-  return {
+  return Map({
     id,
     title,
     detail,
     description,
     purchased,
-  };
+  });
 };
 
 describe('WishlistView reducer', () => {
@@ -29,12 +31,9 @@ describe('WishlistView reducer', () => {
   });
 
   it('should handle MARK_PURCHASED', () => {
-    const item1 = testItem({ id: 100 });
-    const item2 = testItem({ id: 200 });
-    const changedItem1 = testItem({ id: 100, purchased: true });
-    const state = { items: [item1, item2] };
-    const state2 = { items: [changedItem1, item2] };
-
-    expect(reducer(state, actions.markPurchased(100))).toEqual(state2);
+    // FIXME only works in scenario where index === id
+    store.dispatch(actions.markPurchased(0));
+    const state = store.getState();
+    expect(state.getIn(['wishlistView', 'items', 0], 'purchased')).toBeTruthy();
   });
 });

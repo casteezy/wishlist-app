@@ -1,14 +1,18 @@
 import React, { PropTypes } from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { PageHeader } from 'react-bootstrap';
 import Flexbox from 'flexbox-react';
-import WishlistViewItem, { WishlistViewItemType } from './components/WishlistViewItem';
+import WishlistViewItem from './components/WishlistViewItem';
 import './WishlistView.scss';
 
-const mapStateToProps = ({ wishlistView }) => ({
-  ownerName: wishlistView.ownerName,
-  items: wishlistView.items,
-});
+const mapStateToProps = (state) => {
+  const wishlistView = state.get('wishlistView');
+  return {
+    ownerName: wishlistView.get('ownerName'),
+    items: wishlistView.get('items'),
+  };
+};
 
 const WishlistViewComponent = ({ ownerName, items }) => (
   <div className="WishlistView container">
@@ -18,9 +22,9 @@ const WishlistViewComponent = ({ ownerName, items }) => (
       </PageHeader>
       {items.map(itemProps =>
         <WishlistViewItem
-          key={itemProps.id}
+          key={itemProps.get('id')}
           imgSrc="http://placehold.it/200x200"
-          {...itemProps}
+          {...itemProps.toJS()}
         />,
       )}
     </Flexbox>
@@ -29,7 +33,7 @@ const WishlistViewComponent = ({ ownerName, items }) => (
 
 WishlistViewComponent.propTypes = {
   ownerName: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(WishlistViewItemType),
+  items: ImmutablePropTypes.list,
 };
 
 WishlistViewComponent.defaultProps = {
