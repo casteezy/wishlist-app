@@ -1,6 +1,6 @@
 import { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { markPurchased } from '../actions';
+import { markPurchased } from '../../reduxModules/wishlist';
 import LinkBar from './LinkBar';
 
 const mapStateToProps = (state, ownProps) => ({

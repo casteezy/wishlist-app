@@ -1,11 +1,12 @@
 import { List, Map } from 'immutable';
-import {
-  MARK_PURCHASED,
-} from './actions';
+import casual from 'casual-browserify';
+
+// ACTION TYPES
+export const MARK_PURCHASED = 'wishlistReducer-app/wishlistReducer/MARK_PURCHASED';
 
 // TODO: fetch initial state
 let index = 0;
-const initialOwnerName = 'Jane';
+const initialOwnerName = casual.first_name;
 const initialItems = List([
   Map({
     id: index++,
@@ -25,13 +26,29 @@ const initialItems = List([
     detail: '$4.95 at Starbucks, Qty: 2',
     description: 'In cortado con panna mug robust cinnamon single shot sweet organic plunger pot lungo.',
     purchased: true,
-  })]);
+  }), Map({
+    id: index++,
+    title: casual.title,
+    detail: casual.short_description,
+    description: casual.description,
+    purchased: true,
+  }),
+]);
 
 export const initialState = Map({
   ownerName: initialOwnerName,
   items: initialItems,
 });
 
+
+// ACTION CREATORS
+export const markPurchased = id => ({
+  id,
+  type: MARK_PURCHASED,
+});
+
+
+// REDUCERS
 const itemsReducer = (stateItems = [], action) => {
   switch (action.type) {
     case MARK_PURCHASED:
@@ -48,7 +65,7 @@ const itemsReducer = (stateItems = [], action) => {
   }
 };
 
-const wishlistView = (state = initialState, action) => {
+const wishlistReducer = (state = initialState, action) => {
   switch (action.type) {
     case MARK_PURCHASED:
       return state.update('items', itemsArr => itemsReducer(itemsArr, action));
@@ -58,4 +75,4 @@ const wishlistView = (state = initialState, action) => {
   }
 };
 
-export default wishlistView;
+export default wishlistReducer;
