@@ -1,11 +1,12 @@
 import { List, Map } from 'immutable';
+import casual from 'casual-browserify';
 
 // ACTION TYPES
 export const MARK_PURCHASED = 'wishlistReducer-app/wishlistReducer/MARK_PURCHASED';
 
 // TODO: fetch initial state
 let index = 0;
-const initialOwnerName = 'Jane';
+const initialOwnerName = casual.first_name;
 const initialItems = List([
   Map({
     id: index++,
@@ -25,7 +26,14 @@ const initialItems = List([
     detail: '$4.95 at Starbucks, Qty: 2',
     description: 'In cortado con panna mug robust cinnamon single shot sweet organic plunger pot lungo.',
     purchased: true,
-  })]);
+  }), Map({
+    id: index++,
+    title: casual.title,
+    detail: casual.short_description,
+    description: casual.description,
+    purchased: true,
+  }),
+]);
 
 export const initialState = Map({
   ownerName: initialOwnerName,
