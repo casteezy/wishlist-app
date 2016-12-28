@@ -18,6 +18,3 @@ npm-debug.log
 
 # IDE
 .idea/
-
-# ui
-semantic/dist/
