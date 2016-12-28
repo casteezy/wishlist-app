@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { Grid, Container, Header } from 'semantic-ui-react';
+import { Map } from 'immutable';
 import WishlistItem from './components/WishlistItem';
 import './Wishlist.scss';
 
@@ -21,12 +22,12 @@ const Wishlist = ({ ownerName, items }) => (
       </Header>
       <Grid columns="4">
         <Grid.Row>
-          {items.map(itemProps =>
-            <Grid.Column>
+          {Object.keys(items).map(itemId =>
+            <Grid.Column key={itemId}>
               <WishlistItem
-                key={itemProps.get('id')}
+                id={itemId}
                 imgSrc="http://placehold.it/200x200"
-                {...itemProps.toJS()}
+                {...items[itemId]}
               />
             </Grid.Column>,
           )}
@@ -38,11 +39,7 @@ const Wishlist = ({ ownerName, items }) => (
 
 Wishlist.propTypes = {
   ownerName: PropTypes.string.isRequired,
-  items: ImmutablePropTypes.list,
-};
-
-Wishlist.defaultProps = {
-  items: [],
+  items: ImmutablePropTypes.map,
 };
 
 export default connect(mapStateToProps)(Wishlist);

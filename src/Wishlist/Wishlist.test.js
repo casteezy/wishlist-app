@@ -14,12 +14,13 @@ const testItem = ({ id, title = 'Title', detail = 'Detail', description = 'Descr
   });
 };
 
+
 describe('Wishlist reducer', () => {
   it('should handle MARK_PURCHASED', () => {
     store.dispatch(actions.markPurchased(0));
     const state = store.getState();
     expect(
-      state.getIn(['wishlist', 'items']).find(item => item.get('id') === 0).get('purchased')
+      state.getIn(['wishlist', 'items', 0]).get('purchased')
     ).toBeTruthy();
   });
 });

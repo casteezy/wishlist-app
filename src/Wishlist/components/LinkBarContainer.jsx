@@ -24,7 +24,7 @@ const LinkBarContainer = connect(
 
 
 LinkBarContainer.propTypes = {
-  itemId: PropTypes.number.isRequired,
+  itemId: PropTypes.string.isRequired,
   purchased: PropTypes.bool,
 };
 
