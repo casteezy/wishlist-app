@@ -5,13 +5,10 @@ import { Grid, Container, Header } from 'semantic-ui-react';
 import WishlistItem from './components/WishlistItem';
 import './Wishlist.scss';
 
-const mapStateToProps = (state) => {
-  const wishlist = state.get('wishlist');
-  return {
-    ownerName: wishlist.get('ownerName'),
-    items: wishlist.get('items'),
-  };
-};
+const mapStateToProps = state => ({
+  ownerName: state.getIn(['wishlist', 'ownerName']),
+  items: state.getIn(['wishlist', 'items']),
+});
 
 const Wishlist = ({ ownerName, items }) => (
   <div className="Wishlist">
@@ -21,12 +18,12 @@ const Wishlist = ({ ownerName, items }) => (
       </Header>
       <Grid columns="4">
         <Grid.Row>
-          {items.map(itemProps =>
-            <Grid.Column>
+          {items.keySeq().map(key =>
+            <Grid.Column key={key}>
               <WishlistItem
-                key={itemProps.get('id')}
+                id={key}
                 imgSrc="http://placehold.it/200x200"
-                {...itemProps.toJS()}
+                {...items.get(key).toJS()}
               />
             </Grid.Column>,
           )}
@@ -38,11 +35,7 @@ const Wishlist = ({ ownerName, items }) => (
 
 Wishlist.propTypes = {
   ownerName: PropTypes.string.isRequired,
-  items: ImmutablePropTypes.list,
-};
-
-Wishlist.defaultProps = {
-  items: [],
+  items: ImmutablePropTypes.map,
 };
 
 export default connect(mapStateToProps)(Wishlist);

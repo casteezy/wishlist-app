@@ -31,8 +31,6 @@ LinkBar.propTypes = {
 
 LinkBar.defaultProps = {
   purchased: false,
-  handleMarkPurchased: () => {
-  },
 };
 
 export default LinkBar;

@@ -19,7 +19,7 @@ const WishlistItem = ({ id, imgSrc, title, detail, description, purchased }) => 
 );
 
 export const WishlistItemType = WishlistItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   imgSrc: PropTypes.string,
   title: PropTypes.string,
   detail: PropTypes.string,
