@@ -8,21 +8,28 @@ const Heading = ({ ownerName, handleClick }) => (
       {ownerName}&rsquo;s Wishlist
     </Header>
     <Button
+      primary
       size="medium"
       floated="right"
-      primary
       icon="add"
       content="Add Item"
       onClick={handleClick}
     />
     <Button
-      size="small"
+      basic
+      size="medium"
       floated="right"
       icon="unhide"
       content="Show Reserved"
       onClick={handleClick}
     />
-    <Button size="medium" floated="left" icon="write" content="Edit" onClick={handleClick} />
+    <Button
+      size="medium"
+      floated="left"
+      icon="write"
+      content="Edit"
+      onClick={handleClick}
+    />
     <Divider clearing />
   </div>
 );

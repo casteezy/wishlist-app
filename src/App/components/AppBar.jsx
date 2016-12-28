@@ -1,19 +1,36 @@
+/* eslint-disable react/self-closing-comp */
 import React, { PropTypes } from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Container, Menu, Icon } from 'semantic-ui-react';
 
-// TODO: routing
 const activeItem = 'manage';
 
 const AppBar = ({ handleItemClick }) => (
-  <Menu pointing secondary>
-    <Menu.Item header><a href="#TODO">Wishlist App</a></Menu.Item>
-    <Menu.Item name="MANAGE" active={activeItem === 'manage'} onClick={handleItemClick} />
-    <Menu.Item name="PREVIEW" active={activeItem === 'preview'} onClick={handleItemClick} />
-    <Menu.Menu position="right">
-      <Menu.Item icon="" onClick={handleItemClick} />
-      <Menu.Item name="signup" onClick={handleItemClick}>Sign Up</Menu.Item>
-      <Menu.Item name="login" onClick={handleItemClick}>Log In</Menu.Item>
-    </Menu.Menu>
+  <Menu className="AppBar" inverted pointing secondary fixed="top">
+    <div className="AppBar--Spacer AppBar--Spacer__Logo"></div>
+
+    <Menu.Item header className="AppBar--ItemGroup AppBar--ItemGroup__Logo">
+      <Icon name="sidebar" />
+      <span className="AppBar--Logo">
+          Wishlist App
+        </span>
+    </Menu.Item>
+    <Container>
+      <Menu.Item name="MANAGE" active={activeItem === 'manage'} onClick={handleItemClick} />
+      <Menu.Item name="PREVIEW" active={activeItem === 'preview'} onClick={handleItemClick} />
+
+      <Menu.Menu className="AppBar--ItemGroup__Accounts" position="right">
+        <Menu.Item name="signup" onClick={handleItemClick}>
+          <Icon name="signup" /> Sign Up
+        </Menu.Item>
+        <Menu.Item name="login" onClick={handleItemClick}>
+          <Icon name="user" />
+          Log In
+        </Menu.Item>
+      </Menu.Menu>
+
+    </Container>
+
+    <div className="AppBar--Spacer AppBar--Spacer__Accounts"></div>
   </Menu>
 );
 

@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
-import { Grid, Container, Divider } from 'semantic-ui-react';
+import { Grid, Container } from 'semantic-ui-react';
 import Heading from './components/Heading';
 import WishlistItem from './components/WishlistItem';
-import './Wishlist.scss';
+import './_Wishlist.scss';
 
 const Wishlist = ({ ownerName, items }) => (
   <div className="Wishlist">
     <Container>
       <Heading ownerName={ownerName} />
-      <Grid columns="4">
+      <Grid stretched columns="4">
         <Grid.Row>
           {items.keySeq().map(key =>
             <Grid.Column key={key}>

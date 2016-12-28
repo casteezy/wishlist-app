@@ -1,0 +1,42 @@
+@import '../variables';
+
+.App {
+  .App--Content {
+    margin-top: $appbar-height * 1.5;
+  }
+}
+
+.AppBar {
+  height: $appbar-height;
+
+  // inverted secondary menu's only work when wrapped with a segment..
+  // segments do not work with fixed attribute
+  &.ui.secondary.menu.inverted {
+    background: $bg-color-dark;
+  }
+
+  // Take up width in menu in place of absolute item groups
+  .AppBar--Spacer__Logo {
+    width: 160px
+  }
+  .AppBar--Spacer__Accounts {
+    width: 150px;
+  }
+
+  .AppBar--ItemGroup__Logo {
+    &.header.item {
+      position: absolute;
+      left: 0;
+    }
+  }
+  .AppBar--ItemGroup__Accounts {
+    position: absolute;
+    right: 0;
+  }
+}
+
+.SideBar {
+  &.ui.vertical.menu {
+    margin-top: $appbar-height;
+  }
+}

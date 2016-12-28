@@ -2,12 +2,15 @@ import React, { PropTypes } from 'react';
 import { Button } from 'semantic-ui-react';
 
 const btnProps = {
-  size: 'small',
   compact: true,
+  basic: true,
+  size: 'small',
 };
+
+// TODO: user icons vs guest icons
 const LinkBar = ({ purchased, handleMarkPurchased }) => (
   <div className="LinkBar">
-    <Button.Group fluid>
+    <div className="clearfix-group right floated">
       <Button
         {...btnProps}
         icon="star"
@@ -21,27 +24,30 @@ const LinkBar = ({ purchased, handleMarkPurchased }) => (
         {...btnProps}
         icon="delete"
       />
-    </Button.Group>
-    {!purchased && <Button
-      {...btnProps}
-      basic
-      color="green"
-      onClick={handleMarkPurchased}
-      icon="checkmark"
-      content="Reserve"
-    />}
-    {purchased && <Button
-      {...btnProps}
-      color="green"
-      icon="check circle"
-      content="Reserved"
-    />}
-    <Button
-      {...btnProps}
-      basic
-      icon="help circle"
-      content="Ask About"
-    />
+    </div>
+
+    <div className="clearfix-group right floated">
+      {!purchased && <Button
+        {...btnProps}
+        basic
+        color="green"
+        onClick={handleMarkPurchased}
+        icon="checkmark"
+        content="Reserve"
+      />}
+      {purchased && <Button
+        {...btnProps}
+        color="green"
+        icon="check circle"
+        content="Reserved"
+      />}
+      <Button
+        {...btnProps}
+        basic
+        icon="help circle"
+        content="Ask About"
+      />
+    </div>
   </div>
 );
 
