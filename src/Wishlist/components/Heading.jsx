@@ -8,7 +8,8 @@ const Heading = ({ ownerName, handleClick }) => (
       {ownerName}&rsquo;s Wishlist
     </Header>
     <Button
-      primary
+      basic
+      color="blue"
       size="medium"
       floated="right"
       icon="add"
@@ -24,6 +25,7 @@ const Heading = ({ ownerName, handleClick }) => (
       onClick={handleClick}
     />
     <Button
+      basic
       size="medium"
       floated="left"
       icon="write"

@@ -1,3 +1,35 @@
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.basic.red.button,
+.ui.basic.orange.button,
+.ui.basic.yellow.button,
+.ui.basic.olive.button,
+.ui.basic.green.button,
+.ui.basic.teal.button,
+.ui.basic.blue.button,
+.ui.basic.violet.button,
+.ui.basic.purple.button,
+.ui.basic.pink.button,
+.ui.basic.brown.button,
+.ui.basic.grey.button,
+.ui.basic.black.button {
+    box-shadow: @coloredBoxShadow !important;
+}
+
+.ui.basic.red.button:active, .ui.basic.red.button:hover,
+.ui.basic.orange.button:active, .ui.basic.orange.button:hover,
+.ui.basic.yellow.button:active, .ui.basic.yellow.button:hover,
+.ui.basic.olive.button:active, .ui.basic.olive.button:hover,
+.ui.basic.green.button:active, .ui.basic.green.button:hover,
+.ui.basic.teal.button:active, .ui.basic.teal.button:hover,
+.ui.basic.blue.button:active, .ui.basic.blue.button:hover,
+.ui.basic.violet.button:active, .ui.basic.violet.button:hover,
+.ui.basic.purple.button:active, .ui.basic.purple.button:hover,
+.ui.basic.pink.button:active, .ui.basic.pink.button:hover,
+.ui.basic.brown.button:active, .ui.basic.brown.button:hover,
+.ui.basic.grey.button:active, .ui.basic.grey.button:hover,
+.ui.basic.black.button:active, .ui.basic.black.button:hover {
+	background-color: @hoverBackgroundColor !important;
+}

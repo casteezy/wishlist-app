@@ -9,12 +9,6 @@
 .AppBar {
   height: $appbar-height;
 
-  // inverted secondary menu's only work when wrapped with a segment..
-  // segments do not work with fixed attribute
-  &.ui.secondary.menu.inverted {
-    background: $bg-color-dark;
-  }
-
   // Take up width in menu in place of absolute item groups
   .AppBar--Spacer__Logo {
     width: 160px

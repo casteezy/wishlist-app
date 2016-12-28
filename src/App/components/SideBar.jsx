@@ -2,10 +2,10 @@ import React, { PropTypes } from 'react';
 import { Menu, Icon } from 'semantic-ui-react';
 import casual from 'casual-browserify';
 
-const dummyItems = [0, 1, 2, 3, 4].map(idx => ({ title: casual.title }));
+const dummyItems = [0, 1, 2, 3, 4].map(() => ({ title: casual.title }));
 
-const SideBar = ({ handleItemClick, children }) => (
-  <Menu className="SideBar" vertical fixed="left">
+const SideBar = ({ handleItemClick }) => (
+  <Menu inverted vertical className="SideBar" fixed="left">
     <Menu.Item>
       <Icon name="chevron up" />
       My Wishlists
@@ -37,10 +37,6 @@ const SideBar = ({ handleItemClick, children }) => (
 
 SideBar.propTypes = {
   handleItemClick: PropTypes.function,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
 };
 
 export default SideBar;

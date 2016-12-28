@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react';
 import { Button } from 'semantic-ui-react';
 
 const btnProps = {
-  compact: true,
   basic: true,
+  compact: true,
   size: 'small',
 };
 
@@ -29,7 +29,6 @@ const LinkBar = ({ purchased, handleMarkPurchased }) => (
     <div className="clearfix-group right floated">
       {!purchased && <Button
         {...btnProps}
-        basic
         color="green"
         onClick={handleMarkPurchased}
         icon="checkmark"
@@ -43,7 +42,6 @@ const LinkBar = ({ purchased, handleMarkPurchased }) => (
       />}
       <Button
         {...btnProps}
-        basic
         icon="help circle"
         content="Ask About"
       />
