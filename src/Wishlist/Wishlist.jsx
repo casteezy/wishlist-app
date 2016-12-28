@@ -1,21 +1,22 @@
 import React, { PropTypes } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
-import { Grid, Container, Header } from 'semantic-ui-react';
+import { Grid, Container, Header, Button, Divider } from 'semantic-ui-react';
 import WishlistItem from './components/WishlistItem';
 import './Wishlist.scss';
-
-const mapStateToProps = state => ({
-  ownerName: state.getIn(['wishlist', 'ownerName']),
-  items: state.getIn(['wishlist', 'items']),
-});
 
 const Wishlist = ({ ownerName, items }) => (
   <div className="Wishlist">
     <Container>
-      <Header as="h1" className="Wishlist--Title">
-        {ownerName}&rsquo;s Wishlist
-      </Header>
+      <div className="Wishlist--Heading">
+        <Header as="h1" floated="left">
+          {ownerName}&rsquo;s Wishlist
+        </Header>
+        <Button size="medium" floated="right" primary icon="add" content="Add Item" />
+        <Button size="small" floated="right" icon="unhide" content="Show Reserved" />
+        <Button size="medium" floated="left" icon="write" content="Edit" />
+      </div>
+      <Divider clearing />
       <Grid columns="4">
         <Grid.Row>
           {items.keySeq().map(key =>
@@ -32,6 +33,11 @@ const Wishlist = ({ ownerName, items }) => (
     </Container>
   </div>
 );
+
+const mapStateToProps = state => ({
+  ownerName: state.getIn(['wishlist', 'ownerName']),
+  items: state.getIn(['wishlist', 'items']),
+});
 
 Wishlist.propTypes = {
   ownerName: PropTypes.string.isRequired,
