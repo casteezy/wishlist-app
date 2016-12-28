@@ -2,43 +2,43 @@ import React, { PropTypes } from 'react';
 import { Button } from 'semantic-ui-react';
 
 const btnProps = {
-  basic: true,
   size: 'small',
   compact: true,
 };
 const LinkBar = ({ purchased, handleMarkPurchased }) => (
   <div className="LinkBar">
-    {/* <Button.Group fluid>
-     <Button
-     {...btnProps}
-     icon="star"
-     color="yellow"
-     />
-     <Button
-     {...btnProps}
-     icon="write"
-     />
-     <Button
-     {...btnProps}
-     icon="delete"
-     />
-     </Button.Group>*/}
+    <Button.Group fluid>
+      <Button
+        {...btnProps}
+        icon="star"
+        color="yellow"
+      />
+      <Button
+        {...btnProps}
+        icon="write"
+      />
+      <Button
+        {...btnProps}
+        icon="delete"
+      />
+    </Button.Group>
     {!purchased && <Button
-      basic
       {...btnProps}
+      basic
       color="green"
       onClick={handleMarkPurchased}
       icon="checkmark"
       content="Reserve"
     />}
     {purchased && <Button
-      color="green"
       {...btnProps}
+      color="green"
       icon="check circle"
       content="Reserved"
     />}
     <Button
       {...btnProps}
+      basic
       icon="help circle"
       content="Ask About"
     />
