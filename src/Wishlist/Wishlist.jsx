@@ -2,17 +2,13 @@ import React, { PropTypes } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { Grid, Container, Header } from 'semantic-ui-react';
-import { Map } from 'immutable';
 import WishlistItem from './components/WishlistItem';
 import './Wishlist.scss';
 
-const mapStateToProps = (state) => {
-  const wishlist = state.get('wishlist');
-  return {
-    ownerName: wishlist.get('ownerName'),
-    items: wishlist.get('items'),
-  };
-};
+const mapStateToProps = state => ({
+  ownerName: state.getIn(['wishlist', 'ownerName']),
+  items: state.getIn(['wishlist', 'items']),
+});
 
 const Wishlist = ({ ownerName, items }) => (
   <div className="Wishlist">
@@ -22,12 +18,12 @@ const Wishlist = ({ ownerName, items }) => (
       </Header>
       <Grid columns="4">
         <Grid.Row>
-          {Object.keys(items).map(itemId =>
-            <Grid.Column key={itemId}>
+          {items.keySeq().map(key =>
+            <Grid.Column key={key}>
               <WishlistItem
-                id={itemId}
+                id={key}
                 imgSrc="http://placehold.it/200x200"
-                {...items[itemId]}
+                {...items.get(key).toJS()}
               />
             </Grid.Column>,
           )}
