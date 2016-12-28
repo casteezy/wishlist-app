@@ -18,7 +18,7 @@
           ]
         }
       ],
-      "no-unused-vars": 1,
+      "no-unused-vars": "warn",
       "linebreak-style": 0,
       "no-plusplus": 0,
       "no-mixed-operators": 0,
@@ -68,6 +68,7 @@
     "recursive-readdir": "2.1.0",
     "redux": "^3.6.0",
     "redux-mock-store": "^1.2.1",
+    "semantic-ui": "^2.2.7",
     "strip-ansi": "3.0.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
@@ -77,7 +78,6 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
-    "bootstrap": "3",
     "flexbox-react": "^4.1.0",
     "font-awesome": "^4.7.0",
     "getstorybook": "^1.6.1",
@@ -85,13 +85,12 @@
     "immutable": "^3.8.1",
     "node-sass": "^4.1.0",
     "react": "^15.4.1",
-    "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.1",
-    "react-fa": "^4.1.2",
     "react-immutable-proptypes": "^2.1.0",
     "react-redux": "^5.0.1",
     "redux-immutable": "^3.0.9",
-    "sass-loader": "^4.1.0"
+    "sass-loader": "^4.1.0",
+    "semantic-ui-react": "^0.63.2"
   },
   "scripts": {
     "start": "node scripts/start.js",

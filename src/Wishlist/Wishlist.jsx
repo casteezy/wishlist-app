@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
-import { PageHeader } from 'react-bootstrap';
-import Flexbox from 'flexbox-react';
+import { Grid, Container, Header } from 'semantic-ui-react';
 import WishlistItem from './components/WishlistItem';
 import './Wishlist.scss';
 
@@ -15,19 +14,25 @@ const mapStateToProps = (state) => {
 };
 
 const Wishlist = ({ ownerName, items }) => (
-  <div className="Wishlist container">
-    <Flexbox flexDirection="column">
-      <PageHeader className="Wishlist--Title">
+  <div className="Wishlist">
+    <Container>
+      <Header as="h1" className="Wishlist--Title">
         {ownerName}&rsquo;s Wishlist
-      </PageHeader>
-      {items.map(itemProps =>
-        <WishlistItem
-          key={itemProps.get('id')}
-          imgSrc="http://placehold.it/200x200"
-          {...itemProps.toJS()}
-        />,
-      )}
-    </Flexbox>
+      </Header>
+      <Grid columns="4">
+        <Grid.Row>
+          {items.map(itemProps =>
+            <Grid.Column>
+              <WishlistItem
+                key={itemProps.get('id')}
+                imgSrc="http://placehold.it/200x200"
+                {...itemProps.toJS()}
+              />
+            </Grid.Column>,
+          )}
+        </Grid.Row>
+      </Grid>
+    </Container>
   </div>
 );
 

@@ -1,31 +1,21 @@
 import React, { PropTypes } from 'react';
-import { Media } from 'react-bootstrap';
-import { Icon } from 'react-fa';
+import { Card, Image } from 'semantic-ui-react';
 import LinkBarContainer from './LinkBarContainer';
 
 const WishlistItem = ({ id, imgSrc, title, detail, description, purchased }) => (
-  <div className="WishlistItem">
-    <Media>
-      <Media.Left>
-        <div className="ImageBlock">
-          <img className="ImageBlock--Image" src={imgSrc} alt="placeholder" />
-          {purchased && <div className="ImageBlock--Overlay">
-            <span className="ImageBlock--OverlayText"><Icon name="check-circle" /> Purchased</span>
-          </div>}
-        </div>
-      </Media.Left>
-      <Media.Body>
-        <Media.Heading className="WishlistItem--Title">
-          <a href="#TODO">{title}</a>
-        </Media.Heading>
-        <Media.Body>
-          <p className="WishlistItem--Detail"><strong>{detail}</strong></p>
-          <p className="WishlistItem--Description">{description}</p>
-          <LinkBarContainer itemId={id} purchased={purchased} />
-        </Media.Body>
-      </Media.Body>
-    </Media>
-  </div>
+  <Card>
+    <Image src={imgSrc} />
+    <Card.Content>
+      <Card.Header>{title}</Card.Header>
+      <Card.Meta>
+        <span className="date">{detail}</span>
+      </Card.Meta>
+      <Card.Description>{description}</Card.Description>
+    </Card.Content>
+    <Card.Content extra>
+      <LinkBarContainer itemId={id} purchased={purchased} />
+    </Card.Content>
+  </Card>
 );
 
 export const WishlistItemType = WishlistItem.propTypes = {

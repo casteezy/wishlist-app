@@ -1,25 +1,27 @@
 import React, { PropTypes } from 'react';
-import { Icon } from 'react-fa';
+import { Button } from 'semantic-ui-react';
 
 const LinkBar = ({ purchased, handleMarkPurchased }) => (
-  <ul className="LinkBar list-inline">
-    {!purchased && <li className="LinkBar--Item">
-      <a
-        href="#TODO" onClick={
-        (e) => {
-          e.preventDefault();
-          handleMarkPurchased();
-        }}
-      >
-        <Icon name="check-circle" /> Mark as Purchased
-      </a>
-    </li>}
-    <li className="LinkBar--Item">
-      <a href="#TODO">
-        <Icon name="question-circle" /> Ask About This Item
-      </a>
-    </li>
-  </ul>
+  <div className="LinkBar ui two buttons">
+    {!purchased && <Button
+      basic
+      color="green"
+      onClick={handleMarkPurchased}
+      icon="checkmark"
+      content="Mark as Purchased"
+    />}
+    {purchased && <Button
+      color="green"
+      icon="check circle"
+      content="Purchased"
+    />}
+    <Button
+      basic
+      color="blue"
+      icon="help circle"
+      content="Ask About Item"
+    />
+  </div>
 );
 
 LinkBar.propTypes = {
