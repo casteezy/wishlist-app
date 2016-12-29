@@ -1,3 +1,33 @@
 /*******************************
     User Variable Overrides
 *******************************/
+@textTransform: uppercase;
+@basicTextTransform: @textTransform;
+
+@borderBoxShadow: 0;
+@invertedBorderSize: 0;
+@hoverBoxShadow: none !important;
+@hoverBackgroundColor: rgba(0,0,0,.15) !important;
+@hoverBackgroundImage: none;
+
+@horizontalPadding: 1em;
+
+
+/* Basic */
+@basicBorderSize: 0;
+@basicHoverBackground: @hoverBackgroundColor;
+@basicHoverBoxShadow: @hoverBoxShadow;
+
+@basicDownBackground: @hoverBackgroundColor;
+@basicDownBoxShadow: @hoverBoxShadow;
+
+@basicActiveBackground: @hoverBackgroundColor;
+@basicActiveBoxShadow: @hoverBoxShadow;
+
+/* Colored */
+@basicColoredBorderSize: @basicBorderSize;
+@coloredBoxShadow: @borderBoxShadow;
+@coloredBackgroundImage: none:
+
+/* Icon */
+@iconTransition: none !important;

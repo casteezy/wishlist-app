@@ -1,2 +1,2 @@
-import 'font-awesome/css/font-awesome.css';
-import '../semantic/dist/semantic.css';
+export const darkColor = 'grey';
+export const primaryColor = 'violet';

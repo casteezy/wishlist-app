@@ -3,7 +3,7 @@ import { Card, Image } from 'semantic-ui-react';
 import LinkBarContainer from './LinkBarContainer';
 
 const WishlistItem = ({ id, imgSrc, title, detail, description, purchased }) => (
-  <Card>
+  <Card className="WishlistItem">
     <Image src={imgSrc} />
     <Card.Content>
       <Card.Header>{title}</Card.Header>

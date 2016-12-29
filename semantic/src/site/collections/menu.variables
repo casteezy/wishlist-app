@@ -1,3 +1,8 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+.ui.menu .violet.active.item,
+.ui.violet.menu .active.item {
+  border-color: #ffffff !important;
+}
