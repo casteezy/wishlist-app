@@ -1,3 +1,4 @@
+/* eslint-disable */
 var autoprefixer = require('autoprefixer');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -122,11 +123,11 @@ module.exports = {
       },
       // Sass Loader
       // instructions via https://medium.com/@Connorelsea/using-sass-with-create-react-app-7125d6913760#.uj80vlsyb
-      {
-          test: /\.scss$/,
-          include: paths.appSrc,
-          loaders: ["style", "css", "sass"]
-      },
+      // {
+      //     test: /\.scss$/,
+      //     include: paths.appSrc,
+      //     loaders: ["style", "css", "sass"]
+      // },
       // Process JS with Babel.
       {
         test: /\.(js|jsx)$/,
