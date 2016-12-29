@@ -1,5 +1,14 @@
 .Wishlist {
 
+  .ui.card {
+    &:first-child {
+      margin: 1em 0;
+    }
+    .extra.content {
+      padding: 0.2em !important;
+    }
+  }
+
   .Heading {
     .Heading--Title {
       &.header {
@@ -11,10 +20,6 @@
         margin-top: 3px;
       }
     }
-  }
-
-  .ui.card .extra.content {
-    padding: 0.2em !important;
   }
 
   .WishlistItem {

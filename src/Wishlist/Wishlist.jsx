@@ -1,29 +1,29 @@
 import React, { PropTypes } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
-import { Grid, Container } from 'semantic-ui-react';
+import Flexbox from 'flexbox-react';
 import Heading from './components/Heading';
 import WishlistItem from './components/WishlistItem';
 import './_Wishlist.scss';
 
 const Wishlist = ({ ownerName, items }) => (
   <div className="Wishlist">
-    <Container>
-      <Heading ownerName={ownerName} />
-      <Grid stretched columns="4">
-        <Grid.Row>
-          {items.keySeq().map(key =>
-            <Grid.Column key={key}>
-              <WishlistItem
-                id={key}
-                imgSrc="http://placehold.it/200x200"
-                {...items.get(key).toJS()}
-              />
-            </Grid.Column>,
-          )}
-        </Grid.Row>
-      </Grid>
-    </Container>
+    <Heading ownerName={ownerName} />
+    <Flexbox
+      flexDirection="row"
+      flexWrap="wrap"
+      justifyContent="space-around"
+      alignItems="flex-start"
+    >
+      {items.keySeq().map(key =>
+        <WishlistItem
+          id={key}
+          key={key}
+          imgSrc="http://placehold.it/200x200"
+          {...items.get(key).toJS()}
+        />,
+      )}
+    </Flexbox>
   </div>
 );
 

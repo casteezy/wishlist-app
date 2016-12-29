@@ -39,4 +39,9 @@ AppBar.propTypes = {
   handleItemClick: PropTypes.function,
 };
 
+AppBar.defaultProps = {
+  handleItemClick: () => {
+  },
+};
+
 export default AppBar;

@@ -19,6 +19,7 @@
         }
       ],
       "no-unused-vars": "warn",
+      "spaced-comment": "warn",
       "linebreak-style": 0,
       "no-plusplus": 0,
       "no-mixed-operators": 0,

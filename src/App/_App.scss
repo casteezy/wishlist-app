@@ -2,7 +2,9 @@
 
 .App {
   .App--Content {
-    margin-top: $appbar-height * 1.5;
+    margin-top: $appbar-height;
+    margin-left: $sidebar-min-width;
+    padding: 1.5rem 2rem;
   }
 }
 

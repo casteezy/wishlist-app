@@ -12,6 +12,7 @@ const SideBar = ({ handleItemClick }) => (
       <Menu.Menu>
         {
           dummyItems.map(mItem => <Menu.Item
+            key={mItem.title}
             name={mItem.title}
             onClick={handleItemClick}
           >
@@ -37,6 +38,10 @@ const SideBar = ({ handleItemClick }) => (
 
 SideBar.propTypes = {
   handleItemClick: PropTypes.function,
+};
+
+SideBar.defaultProps = {
+  handleItemClick: () => {},
 };
 
 export default SideBar;
