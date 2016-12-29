@@ -1,32 +1,35 @@
 import React, { PropTypes } from 'react';
 import { Header, Button, Divider } from 'semantic-ui-react';
 
+const btnProps = {
+  basic: true,
+  size: 'medium',
+  className: 'Heading--Action',
+};
+
 // TODO: event handlers
 const Heading = ({ ownerName, handleClick }) => (
-  <div className="Wishlist--Heading">
-    <Header as="h1" floated="left">
+  <div className="Heading">
+    <Header className="Heading--Title" as="h1" floated="left">
       {ownerName}&rsquo;s Wishlist
     </Header>
     <Button
-      basic
+      {...btnProps}
       color="blue"
-      size="medium"
       floated="right"
       icon="add"
       content="Add Item"
       onClick={handleClick}
     />
     <Button
-      basic
-      size="medium"
+      {...btnProps}
       floated="right"
       icon="unhide"
       content="Show Reserved"
       onClick={handleClick}
     />
     <Button
-      basic
-      size="medium"
+      {...btnProps}
       floated="left"
       icon="write"
       content="Edit"

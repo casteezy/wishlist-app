@@ -3,8 +3,6 @@ import { Button } from 'semantic-ui-react';
 
 const btnProps = {
   basic: true,
-  compact: true,
-  size: 'small',
 };
 
 // TODO: user icons vs guest icons
@@ -26,7 +24,7 @@ const LinkBar = ({ purchased, handleMarkPurchased }) => (
       />
     </div>
 
-    <div className="clearfix-group right floated">
+    <Button.Group className="clearfix-group" widths="2" attached="bottom">
       {!purchased && <Button
         {...btnProps}
         color="green"
@@ -43,9 +41,9 @@ const LinkBar = ({ purchased, handleMarkPurchased }) => (
       <Button
         {...btnProps}
         icon="help circle"
-        content="Ask About"
+        content="Ask"
       />
-    </div>
+    </Button.Group>
   </div>
 );
 
