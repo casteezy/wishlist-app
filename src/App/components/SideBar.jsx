@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Menu, Icon } from 'semantic-ui-react';
 import casual from 'casual-browserify';
+import '../styles/_SideBar.scss';
 
 const dummyItems = [0, 1, 2, 3, 4].map(() => ({ title: casual.title }));
 

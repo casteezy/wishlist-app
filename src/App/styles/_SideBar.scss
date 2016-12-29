@@ -1,0 +1,8 @@
+@import '../../variables';
+
+.SideBar {
+  // override semantic
+  &.ui.vertical.menu {
+    margin-top: $appbar-height;
+  }
+}

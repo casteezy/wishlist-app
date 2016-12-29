@@ -1,24 +1,17 @@
-@import '../variables';
-
-.App {
-  .App--Content {
-    margin-top: $appbar-height;
-    margin-left: $sidebar-min-width;
-    padding: 1.5rem 2rem;
-  }
-}
+@import '../../variables';
 
 .AppBar {
   height: $appbar-height;
 
   // Take up width in menu in place of absolute item groups
-  .AppBar--Spacer__Logo {
+  &--Spacer__Logo {
     width: 160px
   }
-  .AppBar--Spacer__Accounts {
+  &--Spacer__Accounts {
     width: 150px;
   }
 
+  // increased specificity to override semantic
   .AppBar--ItemGroup__Logo {
     &.header.item {
       position: absolute;
@@ -29,10 +22,6 @@
     position: absolute;
     right: 0;
   }
+
 }
 
-.SideBar {
-  &.ui.vertical.menu {
-    margin-top: $appbar-height;
-  }
-}

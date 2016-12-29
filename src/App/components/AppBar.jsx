@@ -2,6 +2,7 @@
 import React, { PropTypes } from 'react';
 import { Container, Menu, Icon } from 'semantic-ui-react';
 import { primaryColor } from '../../styles';
+import '../styles/_AppBar.scss';
 
 const activeItem = 'manage';
 

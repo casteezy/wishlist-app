@@ -1,0 +1,14 @@
+.Heading {
+  &--Title {
+    // override semantic
+    &.header {
+      margin-bottom: 0.3em;
+    }
+  }
+  &--Action {
+    // override semantic
+    &.ui.button {
+      margin-top: 3px;
+    }
+  }
+}

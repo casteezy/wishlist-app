@@ -3,7 +3,7 @@ import { Container } from 'semantic-ui-react';
 import AppBar from './components/AppBar';
 import SideBar from './components/SideBar';
 import Wishlist from '../Wishlist/Wishlist';
-import './_App.scss';
+import './styles/_App.scss';
 
 // TODO multiple routes
 const App = () => (

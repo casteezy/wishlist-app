@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Flexbox from 'flexbox-react';
 import Heading from './components/Heading';
 import WishlistItem from './components/WishlistItem';
-import './_Wishlist.scss';
+import './styles/_Wishlist.scss';
 
 const Wishlist = ({ ownerName, items }) => (
   <div className="Wishlist">

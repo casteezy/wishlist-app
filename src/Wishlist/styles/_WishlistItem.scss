@@ -1,0 +1,19 @@
+.WishlistItem {
+  margin: 20px 0;
+
+  &--Title {
+    text-transform: uppercase;
+  }
+
+  // override semantic
+  .ui.card {
+    &:first-child {
+      margin: 1em 0;
+    }
+    .extra.content {
+      padding: 0.2em !important;
+    }
+  }
+
+}
+

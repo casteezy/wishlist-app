@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import LinkBarContainer from './LinkBarContainer';
+import '../styles/_WishlistItem.scss';
 
 const WishlistItem = ({ id, imgSrc, title, detail, description, purchased }) => (
   <Card className="WishlistItem">
     <Image src={imgSrc} />
     <Card.Content>
-      <Card.Header>{title}</Card.Header>
+      <Card.Header className="WishlistItem--Title">{title}</Card.Header>
       <Card.Meta>
         <span className="date">{detail}</span>
       </Card.Meta>
