@@ -1,8 +1,0 @@
-/*******************************
-    User Variable Overrides
-*******************************/
-
-.ui.cards > .card > .content .star.icon:hover,
-.ui.card > .content .star.icon:hover {
-  color: inherit;
-}

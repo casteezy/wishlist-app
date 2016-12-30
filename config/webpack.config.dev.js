@@ -7,8 +7,9 @@ var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 var getClientEnvironment = require('./env');
 var paths = require('./paths');
-var combineLoaders = require ('webpack-combine-loaders');
-
+var combineLoaders = require('webpack-combine-loaders');
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -74,14 +75,21 @@ module.exports = {
     // We also include JSX as a common component filename extension to support
     // some tools, although we do not recommend using it, see:
     // https://github.com/facebookincubator/create-react-app/issues/290
-    extensions: ['.js', '.json', '.jsx', ''],
+    extensions: ['.js', '.json', '.jsx',
+      '.scss', '.css', // added for react-toolbox
+      ''
+    ],
+    modulesDirectories: [
+      'node_modules',
+      path.resolve(__dirname, './node_modules')
+    ],
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web'
     }
   },
-  
+
   module: {
     // First, run the linter.
     // It's important to do this before Babel processes the JS.
@@ -128,40 +136,71 @@ module.exports = {
         include: paths.appSrc,
         loader: 'babel',
         query: {
-          
+
           // This is a feature of `babel-loader` for webpack (not Babel itself).
           // It enables caching results in ./node_modules/.cache/babel-loader/
           // directory for faster rebuilds.
           cacheDirectory: true
         }
       },
+      // create-react-app built-in:
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.
       // "style" loader turns CSS into JS modules that inject <style> tags.
       // In production, we use a plugin to extract that CSS to a file, but
       // in development "style" loader enables hot editing of CSS.
+      // {
+      //   test: /\.css$/,
+      //   loader: 'style!css?importLoaders=1!postcss'
+      // },
+
+      // Sass + CSS loaders from https://ihavemind.com/css-modules-with-react-scss-and-webpack-53fb584d88f0#.2etsso3cn
+      // {
+      //   test: /\.scss$/,
+      //   // test    : /(\.scss|\.css)$/,
+      //   include : /(node_modules)\/react-toolbox/,
+      //   loader: combineLoaders([
+      //     {
+      //       loader: 'style-loader'
+      //     }, {
+      //       loader: 'css-loader',
+      //       query: {
+      //         modules: true,
+      //         localIdentName: '[name]__[local]___[hash:base64:5]'
+      //       }
+      //     }, {
+      //       loader: 'sass-loader'
+      //     }
+      //   ])
+      // },
+
+      // from https://github.com/react-toolbox/react-toolbox/issues/121#issuecomment-162258230
+      // {
+      //   test    : /(\.scss|\.css)$/,
+      //   include : path.join(__dirname, '../../', 'src'),
+      //   loaders : [ 'style', 'css', 'sass' ]
+      // },
+      // {
+      //   test    :  /(\.scss|\.css)$/,
+      //   loaders : [
+      //     'style-loader',
+      //     'css-loader' + '?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass',
+      //     'sass-loader' + '?sourceMap',
+      //   ]
+      // },
+      // {
+      //   // test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+      //   test: /\.(png|woff|woff2|eot|ttf)$/,
+      //   loader: 'url-loader?limit=100000'
+      // },
+
+      // from https://github.com/react-toolbox/react-toolbox-example/blob/master/webpack.config.js
       {
-        test: /\.css$/,
-        loader: 'style!css?importLoaders=1!postcss'
+        test: /(\.scss|\.css)$/,
+        loader: ExtractTextPlugin.extract('style',
+          'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
       },
-      // Sass + CSS loaders
-      // from https://ihavemind.com/css-modules-with-react-scss-and-webpack-53fb584d88f0#.2etsso3cn
-      {
-        test: /\.scss$/,
-        loader: combineLoaders([
-          {
-            loader: 'style-loader'
-          }, {
-            loader: 'css-loader',
-            query: {
-              modules: true,
-              localIdentName: '[name]__[local]___[hash:base64:5]'
-            }
-          }, {
-            loader: 'sass-loader'
-          }
-        ])
-      },
+
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
       {
@@ -178,9 +217,9 @@ module.exports = {
       }
     ]
   },
-  
+
   // We use PostCSS for autoprefixing only.
-  postcss: function() {
+  postcss: function () {
     return [
       autoprefixer({
         browsers: [
@@ -192,6 +231,19 @@ module.exports = {
       }),
     ];
   },
+
+  // from https://github.com/react-toolbox/react-toolbox-example/blob/master/webpack.config.js
+  // sassLoader: {
+  //   // data: '@import "theme/_config.scss";',
+  //   data: '@import "theme.scss";',
+  //   // includePaths: [path.resolve(__dirname, './app')]
+  //   includePaths: [path.join(__dirname, '../../', 'src')]
+  // },
+
+  // from http://react-toolbox.com/#/install
+  // sassLoader: {
+  //   data: '@import "' + path.join(__dirname, 'theme/_theme.scss') + '";'
+  // },
   plugins: [
     // Makes the public URL available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
@@ -217,7 +269,10 @@ module.exports = {
     // to restart the development server for Webpack to discover it. This plugin
     // makes the discovery automatic so you don't have to restart.
     // See https://github.com/facebookincubator/create-react-app/issues/186
-    new WatchMissingNodeModulesPlugin(paths.appNodeModules)
+    new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+
+    // from https://github.com/react-toolbox/react-toolbox-example/blob/master/webpack.config.js
+    new ExtractTextPlugin('bundle.css', { allChunks: true }),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

@@ -1,0 +1,19 @@
+
+// from react-toolbox docs styles
+
+@mixin wl-typo-preferred-font($use-preferred: true) {
+  //@if $use-preferred {
+  //  font-family: $wl-preferred-font;
+  //}
+}
+@mixin wl-typo-menu($color-contrast: false, $use-preferred: true) {
+  //@include wl-typo-preferred-font($use-preferred);
+  font-size: $unit * 1.4;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+
+  @if $color-contrast {
+    opacity: .87;
+  }
+}
