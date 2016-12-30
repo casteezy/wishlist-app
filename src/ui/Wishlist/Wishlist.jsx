@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import Flexbox from 'flexbox-react';
-import Heading from './components/Heading';
-import WishlistItem from './components/WishlistItem';
+import Heading from '../components/wishlist/Heading';
+import WishlistItem from '../components/wishlist/WishlistItem';
 import './styles/_Wishlist.scss';
 
 const Wishlist = ({ ownerName, items }) => (
