@@ -7,6 +7,7 @@ var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 var getClientEnvironment = require('./env');
 var paths = require('./paths');
+var combineLoaders = require ('webpack-combine-loaders');
 
 
 
@@ -121,13 +122,6 @@ module.exports = {
           name: 'static/media/[name].[hash:8].[ext]'
         }
       },
-      // Sass Loader
-      // instructions via https://medium.com/@Connorelsea/using-sass-with-create-react-app-7125d6913760#.uj80vlsyb
-      // {
-      //     test: /\.scss$/,
-      //     include: paths.appSrc,
-      //     loaders: ["style", "css", "sass"]
-      // },
       // Process JS with Babel.
       {
         test: /\.(js|jsx)$/,
@@ -149,6 +143,24 @@ module.exports = {
       {
         test: /\.css$/,
         loader: 'style!css?importLoaders=1!postcss'
+      },
+      // Sass + CSS loaders
+      // from https://ihavemind.com/css-modules-with-react-scss-and-webpack-53fb584d88f0#.2etsso3cn
+      {
+        test: /\.scss$/,
+        loader: combineLoaders([
+          {
+            loader: 'style-loader'
+          }, {
+            loader: 'css-loader',
+            query: {
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          }, {
+            loader: 'sass-loader'
+          }
+        ])
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
