@@ -1,0 +1,9 @@
+
+@import '../../globals';
+
+.vertical, .horizontal {
+  > [data-react-toolbox="link"] {
+    color: $color-primary-contrast;
+  }
+}
+
