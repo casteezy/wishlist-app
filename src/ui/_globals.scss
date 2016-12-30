@@ -2,8 +2,8 @@
 // an issue with css-loaders, https://github.com/react-toolbox/react-toolbox/issues/1069
 //@import "~react-toolbox/<file here>" does not work;
 
-@import "../node_modules/react-toolbox/lib/colors";
-@import "../node_modules/react-toolbox/lib/globals";
+@import "../../node_modules/react-toolbox/lib/colors";
+@import "../../node_modules/react-toolbox/lib/globals";
 
 //$color-primary-contrast
 $wl-appbar-height: 6.4 * $unit;
