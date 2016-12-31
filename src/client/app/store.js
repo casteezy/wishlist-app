@@ -1,5 +1,5 @@
 import createStore from './createStore';
-import wishlist from '../reduxModules/wishlist';
+import wishlist from './modules/wishlist';
 
 export default createStore({
   reducers: {

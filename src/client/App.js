@@ -1,5 +1,5 @@
 import React from 'react';
-import MainAppBar from '../components/MainAppBar/MainAppBar';
+import MainAppBar from './navigation/MainAppBar';
 // import AppBar from './components/AppBar';
 // import SideBar from './components/SideBar';
 // import Wishlist from '../Wishlist/Wishlist';
