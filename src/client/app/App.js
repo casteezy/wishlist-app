@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, Panel } from 'react-toolbox/lib/layout';
 import MainAppBar from '../navigation/MainAppBar';
 import SecondaryNav from '../navigation/SecondaryNav';
+import Wishlist from '../list/Wishlist';
 import style from './App.scss';
 
 const App = () => (
@@ -12,8 +13,7 @@ const App = () => (
         <div className={style.belowApp}>
           <SecondaryNav />
           <div className={style.content}>
-            <h1>Main Content</h1>
-            <p>Main content goes here.</p>
+            <Wishlist />
           </div>
         </div>
       </Panel>

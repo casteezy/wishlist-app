@@ -1,24 +1,29 @@
 import React, { PropTypes } from 'react';
-// import { Card, Image } from 'semantic-ui-react';
-import LinkBarContainer from './LinkBarContainer';
-import '../styles/_WishlistItem.scss';
+import { Card, CardMedia, CardTitle, CardText, CardActions } from 'react-toolbox/lib/card';
+import { IconButton, Button } from 'react-toolbox/lib/button';
+import style from './WishlistItem.scss';
+// import LinkBarContainer from './LinkBarContainer';
+// import '../styles/_WishlistItem.scss';
 
 const WishlistItem = ({ id, imgSrc, title, detail, description, purchased }) => (
-  <span className="date">{detail}</span>
+  <Card className={style.card}>
+    <CardMedia aspectRatio="wide" image={imgSrc} />
+    <CardTitle
+      title={title}
+      subtitle={detail}
+    />
+    <CardText>{description}</CardText>
+    <CardActions>
+      <Button icon={purchased ? 'check_circle' : 'check'} label={purchased ? 'Purchased' : 'Mark Purchased'} />
+      <Button icon="help" label="Ask" />
+    </CardActions>
+    <CardActions>
+      <IconButton icon="star" />
+      <IconButton icon="mode_edit" />
+      <IconButton icon="delete" />
+    </CardActions>
+  </Card>
 );
-/*<Card className="WishlistItem">
- <Image src={imgSrc} />
- <Card.Content>
- <Card.Header className="WishlistItem--Title">{title}</Card.Header>
- <Card.Meta>
- <span className="date">{detail}</span>
- </Card.Meta>
- <Card.Description>{description}</Card.Description>
- </Card.Content>
- <Card.Content extra>
- <LinkBarContainer itemId={id} purchased={purchased} />
- </Card.Content>
- </Card>*/
 export const WishlistItemType = WishlistItem.propTypes = {
   id: PropTypes.string.isRequired,
   imgSrc: PropTypes.string,
