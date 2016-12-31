@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar } from 'react-toolbox/lib/app_bar';
 import Link from 'react-toolbox/lib/link';
-import AccountNavigation from '../AccountNavigation/AccountNavigation';
+import AccountNavigation from './AccountNavigation';
 import style from './MainAppBar.scss';
 
 const MainAppBar = () => (

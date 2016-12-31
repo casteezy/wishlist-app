@@ -33,11 +33,11 @@ var nodePaths = (process.env.NODE_PATH || '')
 // config after eject: we're in ./config/
 module.exports = {
   appBuild: resolveApp('build'),
-  appPublic: resolveApp('src/ui/public'),
-  appHtml: resolveApp('src/ui/public/index.html'),
-  appIndexJs: resolveApp('src/ui/index.js'),
+  appPublic: resolveApp('src/public'),
+  appHtml: resolveApp('src/public/index.html'),
+  appIndexJs: resolveApp('src/client/index.js'),
   appPackageJson: resolveApp('package.json'),
-  appSrc: resolveApp('src/ui'),
+  appSrc: resolveApp('src/client'),
   yarnLockFile: resolveApp('yarn.lock'),
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),

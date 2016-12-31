@@ -1,0 +1,15 @@
+@import '../../../node_modules/react-toolbox/lib/layout/theme';
+
+.app {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+
+}
+.belowApp {
+  flex: 1 1 auto;
+}
+.content {
+  margin: 1.5rem;
+  margin-left: $navigation-drawer-desktop-width + 1.5rem;
+}
