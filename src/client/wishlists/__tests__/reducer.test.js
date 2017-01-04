@@ -1,7 +1,7 @@
 /* eslint-disable no-undef, comma-dangle */
-import { Map, List } from 'immutable';
-import store from '../App/store';
-import * as actions from '../reduxModules/wishlist';
+import { Map } from 'immutable';
+import store from '../../main/store';
+import * as actions from '../actions';
 
 const testItem = ({ id, title = 'Title', detail = 'Detail', description = 'Description', purchased = false }) => {
   if (!id) throw new Error('id required for testItem');

@@ -44,4 +44,10 @@ Heading.propTypes = {
   handleClick: PropTypes.function,
 };
 
+Heading.defaultProps = {
+  handleClick: () => {
+    console.log('clicked');
+  },
+};
+
 export default Heading;

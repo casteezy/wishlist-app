@@ -1,6 +1,5 @@
 import { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { markPurchased } from '../../reduxModules/wishlist';
 import LinkBar from './LinkBar';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -9,7 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   handleMarkPurchased: () => {
-    dispatch(markPurchased(ownProps.itemId));
+    ownProps.markPurchased(ownProps.itemId);
   },
   handleAskAbout: () => {
     // TODO
@@ -26,6 +25,7 @@ const LinkBarContainer = connect(
 LinkBarContainer.propTypes = {
   itemId: PropTypes.string.isRequired,
   purchased: PropTypes.bool,
+  markPurchased: PropTypes.func,
 };
 
 export default LinkBarContainer;
