@@ -1,9 +1,17 @@
 import { Map } from 'immutable';
 import casual from 'casual-browserify';
+import * as actions from './constants/actionTypes';
 
-// ACTION TYPES
-export const PATH = 'app/wishlist/';
-export const MARK_PURCHASED = `${PATH}MARK_PURCHASED`;
+// REDUCERS
+const itemsReducer = (stateItems = {}, action) => {
+  switch (action.type) {
+    case actions.MARK_PURCHASED:
+      return stateItems.setIn([action.payload.id, 'purchased'], true);
+    default:
+      return stateItems;
+
+  }
+};
 
 // TODO: fetch initial state
 const initialOwnerName = casual.first_name;
@@ -35,33 +43,15 @@ const initialItems =
     }),
   });
 
+
 export const initialState = Map({
   ownerName: initialOwnerName,
   items: initialItems,
 });
 
-
-// ACTION CREATORS
-export const markPurchased = id => ({
-  type: MARK_PURCHASED,
-  payload: { id },
-});
-
-
-// REDUCERS
-const itemsReducer = (stateItems = {}, action) => {
-  switch (action.type) {
-    case MARK_PURCHASED:
-      return stateItems.setIn([action.payload.id, 'purchased'], true);
-    default:
-      return stateItems;
-
-  }
-};
-
 const wishlistReducer = (state = initialState, action) => {
   switch (action.type) {
-    case MARK_PURCHASED:
+    case actions.MARK_PURCHASED:
       return state.update('items', itemsMap => itemsReducer(itemsMap, action));
     default:
       return state;

@@ -1,9 +1,7 @@
 import React from 'react';
 import { Container } from 'semantic-ui-react';
-import AppBar from './components/AppBar';
-import SideBar from './components/SideBar';
-import Wishlist from '../Wishlist/Wishlist';
-import './styles/_App.scss';
+import '../styles/App.scss';
+import { AppBar, SideBar, Wishlist } from '../../wishlists';
 
 // TODO multiple routes
 const App = () => (

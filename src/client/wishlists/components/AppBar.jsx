@@ -1,13 +1,12 @@
 /* eslint-disable react/self-closing-comp */
 import React, { PropTypes } from 'react';
 import { Container, Menu, Icon } from 'semantic-ui-react';
-import { primaryColor } from '../../styles';
-import '../styles/_AppBar.scss';
+import '../styles/AppBar.scss';
 
 const activeItem = 'manage';
 
 const AppBar = ({ handleItemClick }) => (
-  <Menu className="AppBar" color={primaryColor} inverted pointing secondary fixed="top">
+  <Menu className="AppBar" color="violet" inverted pointing secondary fixed="top">
     <div className="AppBar--Spacer AppBar--Spacer__Logo"></div>
 
     <Menu.Item header className="AppBar--ItemGroup AppBar--ItemGroup__Logo">
@@ -42,6 +41,7 @@ AppBar.propTypes = {
 
 AppBar.defaultProps = {
   handleItemClick: () => {
+    console.log('clicked');
   },
 };
 
