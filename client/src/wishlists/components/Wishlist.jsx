@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import Flexbox from 'flexbox-react';
 import Heading from './Heading';
 import WishlistItem from './WishlistItem';
-import { markPurchased, toggleFavorite } from '../actions';
+import { togglePurchased, toggleFavorite } from '../actions';
 import '../styles/Wishlist.scss';
 
-const Wishlist = ({ ownerName, items, handleMarkPurchased, handleToggleFavorited }) => (
+const Wishlist = ({ ownerName, items, handleTogglePurchased, handleToggleFavorited }) => (
   <div className="Wishlist">
     <Heading ownerName={ownerName} />
     <Flexbox
@@ -21,9 +21,9 @@ const Wishlist = ({ ownerName, items, handleMarkPurchased, handleToggleFavorited
           id={key}
           key={key}
           imgSrc="http://placehold.it/200x200"
-          handleMarkPurchased={(e) => {
+          handleTogglePurchased={(e) => {
             e.preventDefault();
-            handleMarkPurchased(key);
+            handleTogglePurchased(key, !items.getIn([key, 'purchased']));
           }}
           handleToggleFavorited={(e) => {
             e.preventDefault();
@@ -42,18 +42,17 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleMarkPurchased: (itemId) => {
-    dispatch(markPurchased(itemId));
+  handleTogglePurchased: (itemId, purchased) => {
+    dispatch(togglePurchased(itemId, purchased));
   },
   handleToggleFavorited: (itemId, favorited) => {
-    console.log('favorited', favorited);
     dispatch(toggleFavorite(itemId, favorited));
   },
 });
 
 Wishlist.propTypes = {
   ownerName: PropTypes.string.isRequired,
-  handleMarkPurchased: PropTypes.func.isRequired,
+  handleTogglePurchased: PropTypes.func.isRequired,
   handleToggleFavorited: PropTypes.func.isRequired,
   items: ImmutablePropTypes.map,
 };

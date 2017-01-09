@@ -17,13 +17,20 @@ const testItem = ({
 };
 
 describe('Wishlist reducer', () => {
-  it('should handle MARK_PURCHASED', () => {
+  it('should handle TOGGLE_PURCHASED', () => {
     const itemId = 0;
-    store.dispatch(actions.markPurchased(itemId));
-    const state = store.getState();
+    store.dispatch(actions.togglePurchased(itemId, true));
+
+    let state = store.getState();
     expect(
       state.getIn(['wishlist', 'items', itemId]).get('purchased')
     ).toBeTruthy();
+
+    store.dispatch(actions.togglePurchased(itemId, false));
+    state = store.getState();
+    expect(
+      state.getIn(['wishlist', 'items', itemId]).get('purchased')
+    ).toBeFalsy();
   });
   it('should handle TOGGLE_FAVORITE', () => {
     const itemId = 0;

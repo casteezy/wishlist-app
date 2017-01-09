@@ -6,7 +6,13 @@ const btnProps = {
 };
 
 // TODO: user icons vs guest icons
-const LinkBar = ({ itemId, purchased, favorited, handleMarkPurchased, handleToggleFavorited }) => (
+const LinkBar = ({
+  itemId,
+  purchased,
+  favorited,
+  handleTogglePurchased,
+  handleToggleFavorited,
+}) => (
   <div className="LinkBar">
     <div className="clearfix-group right floated">
       {!favorited && <Button
@@ -35,15 +41,15 @@ const LinkBar = ({ itemId, purchased, favorited, handleMarkPurchased, handleTogg
       {!purchased && <Button
         {...btnProps}
         color="green"
-        onClick={handleMarkPurchased}
         icon="checkmark"
         content="Reserve"
+        onClick={handleTogglePurchased}
       />}
       {purchased && <Button
         {...btnProps}
-        color="green"
         icon="check circle"
         content="Reserved"
+        onClick={handleTogglePurchased}
       />}
       <Button
         {...btnProps}
@@ -58,7 +64,7 @@ LinkBar.propTypes = {
   itemId: PropTypes.string.isRequired,
   purchased: PropTypes.bool,
   favorited: PropTypes.bool,
-  handleMarkPurchased: PropTypes.func.isRequired,
+  handleTogglePurchased: PropTypes.func.isRequired,
   handleToggleFavorited: PropTypes.func.isRequired,
 };
 

@@ -5,8 +5,8 @@ import * as actions from './constants/actionTypes';
 // REDUCERS
 const itemsReducer = (stateItems = {}, { type, payload }) => {
   switch (type) {
-    case actions.MARK_PURCHASED:
-      return stateItems.setIn([payload.id, 'purchased'], true);
+    case actions.TOGGLE_PURCHASED:
+      return stateItems.setIn([payload.id, 'purchased'], payload.purchased);
     case actions.TOGGLE_FAVORITE:
       return stateItems.setIn([payload.id, 'favorited'], payload.favorited);
     default:
@@ -55,7 +55,7 @@ export const initialState = Map({
 
 const wishlistReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actions.MARK_PURCHASED:
+    case actions.TOGGLE_PURCHASED:
     case actions.TOGGLE_FAVORITE:
       return state.update('items', itemsMap => itemsReducer(itemsMap, action));
     default:

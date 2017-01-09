@@ -11,7 +11,7 @@ const WishlistItem = ({
   description,
   purchased,
   favorited,
-  handleMarkPurchased,
+  handleTogglePurchased,
   handleToggleFavorited,
 }) => (
   <Card className="WishlistItem">
@@ -28,7 +28,7 @@ const WishlistItem = ({
         itemId={id}
         purchased={purchased}
         favorited={favorited}
-        handleMarkPurchased={handleMarkPurchased}
+        handleTogglePurchased={handleTogglePurchased}
         handleToggleFavorited={handleToggleFavorited}
       />
     </Card.Content>
@@ -43,7 +43,7 @@ export const WishlistItemType = WishlistItem.propTypes = {
   description: PropTypes.string,
   purchased: PropTypes.bool,
   favorited: PropTypes.bool,
-  handleMarkPurchased: PropTypes.func.isRequired,
+  handleTogglePurchased: PropTypes.func.isRequired,
   handleToggleFavorited: PropTypes.func.isRequired,
 };
 

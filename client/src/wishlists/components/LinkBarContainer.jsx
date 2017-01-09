@@ -7,8 +7,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  handleMarkPurchased: () => {
-    ownProps.markPurchased(ownProps.itemId);
+  handleTogglePurchased: () => {
+    ownProps.togglePurchased(ownProps.itemId);
   },
   handleAskAbout: () => {
     // TODO
@@ -25,7 +25,7 @@ const LinkBarContainer = connect(
 LinkBarContainer.propTypes = {
   itemId: PropTypes.string.isRequired,
   purchased: PropTypes.bool,
-  markPurchased: PropTypes.func,
+  togglePurchased: PropTypes.func,
 };
 
 export default LinkBarContainer;

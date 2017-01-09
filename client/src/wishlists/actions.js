@@ -4,9 +4,9 @@ import * as actions from './constants/actionTypes';
 
 // ACTION CREATORS
 
-const markPurchased = id => ({
-  type: actions.MARK_PURCHASED,
-  payload: { id },
+const togglePurchased = (id, purchased) => ({
+  type: actions.TOGGLE_PURCHASED,
+  payload: { id, purchased },
 });
 
 const toggleFavorite = (id, favorited) => ({
@@ -15,6 +15,6 @@ const toggleFavorite = (id, favorited) => ({
 });
 
 export {
-  markPurchased,
+  togglePurchased,
   toggleFavorite,
 };
