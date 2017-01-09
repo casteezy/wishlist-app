@@ -21,14 +21,8 @@ const Wishlist = ({ ownerName, items, handleTogglePurchased, handleToggleFavorit
           id={key}
           key={key}
           imgSrc="http://placehold.it/200x200"
-          handleTogglePurchased={(e) => {
-            e.preventDefault();
-            handleTogglePurchased(key, !items.getIn([key, 'purchased']));
-          }}
-          handleToggleFavorited={(e) => {
-            e.preventDefault();
-            handleToggleFavorited(key, !items.getIn([key, 'favorited']));
-          }}
+          handleTogglePurchased={() => handleTogglePurchased(key, !items.getIn([key, 'purchased']))}
+          handleToggleFavorited={() => handleToggleFavorited(key, !items.getIn([key, 'favorited']))}
           {...items.get(key).toJS()}
         />,
       )}
