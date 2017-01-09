@@ -4,7 +4,15 @@ import LinkBar from './LinkBar';
 import '../styles/WishlistItem.scss';
 
 const WishlistItem = ({
-  id, imgSrc, title, detail, description, purchased, handleMarkPurchased,
+  id,
+  imgSrc,
+  title,
+  detail,
+  description,
+  purchased,
+  favorited,
+  handleMarkPurchased,
+  handleToggleFavorited,
 }) => (
   <Card className="WishlistItem">
     <Image src={imgSrc} />
@@ -16,7 +24,13 @@ const WishlistItem = ({
       <Card.Description>{description}</Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <LinkBar itemId={id} purchased={purchased} handleMarkPurchased={handleMarkPurchased} />
+      <LinkBar
+        itemId={id}
+        purchased={purchased}
+        favorited={favorited}
+        handleMarkPurchased={handleMarkPurchased}
+        handleToggleFavorited={handleToggleFavorited}
+      />
     </Card.Content>
   </Card>
 );
@@ -28,7 +42,9 @@ export const WishlistItemType = WishlistItem.propTypes = {
   detail: PropTypes.string,
   description: PropTypes.string,
   purchased: PropTypes.bool,
-  handleMarkPurchased: PropTypes.func,
+  favorited: PropTypes.bool,
+  handleMarkPurchased: PropTypes.func.isRequired,
+  handleToggleFavorited: PropTypes.func.isRequired,
 };
 
 export default WishlistItem;

@@ -9,6 +9,12 @@ const markPurchased = id => ({
   payload: { id },
 });
 
+const toggleFavorite = (id, favorited) => ({
+  type: actions.TOGGLE_FAVORITE,
+  payload: { id, favorited },
+});
+
 export {
   markPurchased,
+  toggleFavorite,
 };
