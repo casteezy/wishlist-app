@@ -6,7 +6,7 @@ const btnProps = {
 };
 
 // TODO: user icons vs guest icons
-const LinkBar = ({ purchased, handleMarkPurchased }) => (
+const LinkBar = ({ itemId, purchased, handleMarkPurchased }) => (
   <div className="LinkBar">
     <div className="clearfix-group right floated">
       <Button
@@ -48,6 +48,7 @@ const LinkBar = ({ purchased, handleMarkPurchased }) => (
 );
 
 LinkBar.propTypes = {
+  itemId: PropTypes.string.isRequired,
   purchased: PropTypes.bool,
   handleMarkPurchased: PropTypes.func.isRequired,
 };

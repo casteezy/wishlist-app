@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react';
 import { Card, Image } from 'semantic-ui-react';
-import LinkBarContainer from './LinkBarContainer';
+import LinkBar from './LinkBar';
 import '../styles/WishlistItem.scss';
 
-const WishlistItem = ({ id, imgSrc, title, detail, description, purchased, markPurchased }) => (
+const WishlistItem = ({
+  id, imgSrc, title, detail, description, purchased, handleMarkPurchased,
+}) => (
   <Card className="WishlistItem">
     <Image src={imgSrc} />
     <Card.Content>
@@ -14,7 +16,7 @@ const WishlistItem = ({ id, imgSrc, title, detail, description, purchased, markP
       <Card.Description>{description}</Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <LinkBarContainer itemId={id} purchased={purchased} markPurchased={markPurchased} />
+      <LinkBar itemId={id} purchased={purchased} handleMarkPurchased={handleMarkPurchased} />
     </Card.Content>
   </Card>
 );
@@ -26,7 +28,7 @@ export const WishlistItemType = WishlistItem.propTypes = {
   detail: PropTypes.string,
   description: PropTypes.string,
   purchased: PropTypes.bool,
-  markPurchased: PropTypes.func,
+  handleMarkPurchased: PropTypes.func,
 };
 
 export default WishlistItem;
