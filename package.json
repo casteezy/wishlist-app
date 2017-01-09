@@ -97,27 +97,27 @@
   },
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "client": "node scripts/start-client.js",
-    "server": "node src/server/index.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "server": "node server/index.js",
+    "client": "node client/scripts/start.js",
+    "build": "node client/scripts/build.js",
+    "test": "node client/scripts/test.js --env=jsdom"
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/__tests__/*.{js,jsx}"
+      "client/src/**/__tests__/*.{js,jsx}"
     ],
     "setupFiles": [
-      "<rootDir>\\config\\polyfills.js"
+      "<rootDir>\\client\\config\\polyfills.js"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>[/\\\\](build|docs|node_modules)[/\\\\]"
+      "<rootDir>[/\\\\](client\\build|client\\docs|node_modules)[/\\\\]"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>\\config\\jest\\cssTransform.js",
-      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>\\config\\jest\\fileTransform.js"
+      "^.+\\.css$": "<rootDir>\\client\\config\\jest\\cssTransform.js",
+      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>\\client\\config\\jest\\fileTransform.js"
     },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
