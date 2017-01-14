@@ -6,7 +6,7 @@
   }
 
   // override semantic
-  .ui.card {
+  &.ui.card {
     &:first-child {
       margin: 1em 0;
     }

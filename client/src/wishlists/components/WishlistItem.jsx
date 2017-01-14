@@ -4,7 +4,6 @@ import LinkBar from './LinkBar';
 import '../styles/WishlistItem.scss';
 
 const WishlistItem = ({
-  id,
   imgSrc,
   title,
   detail,
@@ -25,7 +24,6 @@ const WishlistItem = ({
     </Card.Content>
     <Card.Content extra>
       <LinkBar
-        itemId={id}
         purchased={purchased}
         favorited={favorited}
         handleTogglePurchased={handleTogglePurchased}
@@ -36,7 +34,6 @@ const WishlistItem = ({
 );
 
 export const WishlistItemType = WishlistItem.propTypes = {
-  id: PropTypes.string.isRequired,
   imgSrc: PropTypes.string,
   title: PropTypes.string,
   detail: PropTypes.string,

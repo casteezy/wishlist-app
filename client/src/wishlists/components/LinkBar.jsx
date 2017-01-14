@@ -1,13 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Button } from 'semantic-ui-react';
 
-const btnProps = {
-  basic: true,
-};
-
 // TODO: user icons vs guest icons
 const LinkBar = ({
-  itemId,
   purchased,
   favorited,
   handleTogglePurchased,
@@ -16,43 +11,43 @@ const LinkBar = ({
   <div className="LinkBar">
     <div className="clearfix-group right floated">
       {!favorited && <Button
-        {...btnProps}
+        basic
         onClick={handleToggleFavorited}
         icon="empty star"
         color="yellow"
       />}
       {favorited && <Button
-        {...btnProps}
+        basic
         onClick={handleToggleFavorited}
         icon="star"
         color="yellow"
       />}
       <Button
-        {...btnProps}
+        basic
         icon="write"
       />
       <Button
-        {...btnProps}
+        basic
         icon="delete"
       />
     </div>
 
     <Button.Group className="clearfix-group" widths="2" attached="bottom">
       {!purchased && <Button
-        {...btnProps}
+        basic
         color="green"
         icon="checkmark"
         content="Reserve"
         onClick={handleTogglePurchased}
       />}
       {purchased && <Button
-        {...btnProps}
+        basic
         icon="check circle"
         content="Reserved"
         onClick={handleTogglePurchased}
       />}
       <Button
-        {...btnProps}
+        basic
         icon="help circle"
         content="Ask"
       />
@@ -61,15 +56,10 @@ const LinkBar = ({
 );
 
 LinkBar.propTypes = {
-  itemId: PropTypes.string.isRequired,
-  purchased: PropTypes.bool,
-  favorited: PropTypes.bool,
+  purchased: PropTypes.bool.isRequired,
+  favorited: PropTypes.bool.isRequired,
   handleTogglePurchased: PropTypes.func.isRequired,
   handleToggleFavorited: PropTypes.func.isRequired,
-};
-
-LinkBar.defaultProps = {
-  purchased: false,
 };
 
 export default LinkBar;
