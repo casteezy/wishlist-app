@@ -1,4 +1,3 @@
-
 /* eslint-disable import/prefer-default-export */
 import * as actions from './constants/actionTypes';
 
@@ -14,7 +13,14 @@ const toggleFavorite = (id, favorited) => ({
   payload: { id, favorited },
 });
 
+const toggleAddItemModal = showModal => ({
+  type: actions.TOGGLE_ADD_ITEM_MODAL,
+  payload: { showModal },
+});
+
+
 export {
   togglePurchased,
   toggleFavorite,
+  toggleAddItemModal,
 };

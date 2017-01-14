@@ -7,8 +7,7 @@ const btnProps = {
   className: 'Heading--Action',
 };
 
-// TODO: event handlers
-const Heading = ({ ownerName }) => (
+const Heading = ({ ownerName, handleShowAddItemModal }) => (
   <div className="Heading">
     <Header className="Heading--Title" as="h1" floated="left">
       {ownerName}&rsquo;s Wishlist
@@ -19,6 +18,7 @@ const Heading = ({ ownerName }) => (
       floated="right"
       icon="add"
       content="Add Item"
+      onClick={handleShowAddItemModal}
     />
     <Button
       {...btnProps}
@@ -38,6 +38,7 @@ const Heading = ({ ownerName }) => (
 
 Heading.propTypes = {
   ownerName: PropTypes.string.isRequired,
+  handleShowAddItemModal: PropTypes.func.isRequired,
 };
 
 export default Heading;

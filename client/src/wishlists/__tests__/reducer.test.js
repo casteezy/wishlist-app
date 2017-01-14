@@ -46,4 +46,16 @@ describe('Wishlist reducer', () => {
       state.getIn(['wishlist', 'items', itemId]).get('favorited')
     ).toBeFalsy();
   });
+  it('should handle ADD_ITEM_MODAL actions', () => {
+    const statePathArr = ['wishlist', 'showAddItemModal'];
+    store.dispatch(actions.toggleAddItemModal(true));
+
+    let state = store.getState();
+    expect(state.getIn(statePathArr)).toBeTruthy();
+
+    store.dispatch(actions.toggleAddItemModal(false));
+    state = store.getState();
+    expect(state.getIn(statePathArr)).toBeFalsy();
+
+  });
 });

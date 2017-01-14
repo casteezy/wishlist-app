@@ -51,6 +51,7 @@ const initialItems =
 export const initialState = Map({
   ownerName: initialOwnerName,
   items: initialItems,
+  showAddItemModal: false,
 });
 
 const wishlistReducer = (state = initialState, action) => {
@@ -58,6 +59,8 @@ const wishlistReducer = (state = initialState, action) => {
     case actions.TOGGLE_PURCHASED:
     case actions.TOGGLE_FAVORITE:
       return state.update('items', itemsMap => itemsReducer(itemsMap, action));
+    case actions.TOGGLE_ADD_ITEM_MODAL:
+      return state.set('showAddItemModal', action.payload.showModal);
     default:
       return state;
   }
