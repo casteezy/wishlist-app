@@ -4,26 +4,45 @@ import { connect } from 'react-redux';
 import Flexbox from 'flexbox-react';
 import Heading from './Heading';
 import WishlistItem from './WishlistItem';
-import { togglePurchased, toggleFavorite } from '../actions';
+import AddItemModal from './AddItemModal';
+import { toggleAddItemModal, togglePurchased, toggleFavorite } from '../actions';
 import '../styles/Wishlist.scss';
 
-const Wishlist = ({ ownerName, items, handleTogglePurchased, handleToggleFavorited }) => (
+const Wishlist = ({
+  ownerName,
+  items,
+  handleShowAddItemModal,
+
+  showAddItemModal,
+  handleAddItemModalClose,
+  handleAddItem,
+
+  handleTogglePurchased,
+  handleToggleFavorited
+}) => (
   <div className="Wishlist">
-    <Heading ownerName={ownerName} />
+    <Heading
+      ownerName={ownerName}
+      handleShowAddItemModal={handleShowAddItemModal}
+    />
+    <AddItemModal
+      showModal={showAddItemModal}
+      handleModalClose={handleAddItemModalClose}
+      handleAddItem={handleAddItem}
+    />
     <Flexbox
       flexDirection="row"
       flexWrap="wrap"
       justifyContent="space-around"
       alignItems="flex-start"
     >
-      {items.keySeq().map(key =>
+      {items.keySeq().map(itemId =>
         <WishlistItem
-          id={key}
-          key={key}
-          imgSrc="http://placehold.it/200x200"
-          handleTogglePurchased={() => handleTogglePurchased(key, !items.getIn([key, 'purchased']))}
-          handleToggleFavorited={() => handleToggleFavorited(key, !items.getIn([key, 'favorited']))}
-          {...items.get(key).toJS()}
+          key={itemId}
+          imgSrc="http://placehold.it/290x200"
+          handleTogglePurchased={() => handleTogglePurchased(itemId, !items.getIn([itemId, 'purchased']))}
+          handleToggleFavorited={() => handleToggleFavorited(itemId, !items.getIn([itemId, 'favorited']))}
+          {...items.get(itemId).toJS()}
         />,
       )}
     </Flexbox>
@@ -33,9 +52,19 @@ const Wishlist = ({ ownerName, items, handleTogglePurchased, handleToggleFavorit
 const mapStateToProps = state => ({
   ownerName: state.getIn(['wishlist', 'ownerName']),
   items: state.getIn(['wishlist', 'items']),
+  showAddItemModal: state.getIn(['wishlist', 'showAddItemModal'])
 });
 
 const mapDispatchToProps = dispatch => ({
+  handleShowAddItemModal: () => {
+    dispatch(toggleAddItemModal(true));
+  },
+  handleAddItemModalClose: () => {
+    dispatch(toggleAddItemModal(false));
+  },
+  handleAddItem: (newItem) => {
+
+  },
   handleTogglePurchased: (itemId, purchased) => {
     dispatch(togglePurchased(itemId, purchased));
   },
@@ -46,6 +75,10 @@ const mapDispatchToProps = dispatch => ({
 
 Wishlist.propTypes = {
   ownerName: PropTypes.string.isRequired,
+  handleShowAddItemModal: PropTypes.func,
+  showAddItemModal: PropTypes.bool.isRequired,
+  handleAddItemModalClose: PropTypes.func,
+  handleAddItem: PropTypes.func,
   handleTogglePurchased: PropTypes.func.isRequired,
   handleToggleFavorited: PropTypes.func.isRequired,
   items: ImmutablePropTypes.map,

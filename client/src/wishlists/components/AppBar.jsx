@@ -5,7 +5,7 @@ import '../styles/AppBar.scss';
 
 const activeItem = 'manage';
 
-const AppBar = ({ handleItemClick }) => (
+const AppBar = () => (
   <Menu className="AppBar" color="violet" inverted pointing secondary fixed="top">
     <div className="AppBar--Spacer AppBar--Spacer__Logo"></div>
 
@@ -16,14 +16,14 @@ const AppBar = ({ handleItemClick }) => (
         </span>
     </Menu.Item>
     <Container>
-      <Menu.Item name="MANAGE" active={activeItem === 'manage'} onClick={handleItemClick} />
-      <Menu.Item name="PREVIEW" active={activeItem === 'preview'} onClick={handleItemClick} />
+      <Menu.Item name="MANAGE" active={activeItem === 'manage'} />
+      <Menu.Item name="PREVIEW" active={activeItem === 'preview'} />
 
       <Menu.Menu className="AppBar--ItemGroup__Accounts" position="right">
-        <Menu.Item name="signup" onClick={handleItemClick}>
+        <Menu.Item name="signup">
           <Icon name="signup" /> Sign Up
         </Menu.Item>
-        <Menu.Item name="login" onClick={handleItemClick}>
+        <Menu.Item name="login">
           <Icon name="user" />
           Log In
         </Menu.Item>
@@ -34,15 +34,5 @@ const AppBar = ({ handleItemClick }) => (
     <div className="AppBar--Spacer AppBar--Spacer__Accounts"></div>
   </Menu>
 );
-
-AppBar.propTypes = {
-  handleItemClick: PropTypes.function,
-};
-
-AppBar.defaultProps = {
-  handleItemClick: () => {
-    console.log('clicked');
-  },
-};
 
 export default AppBar;
